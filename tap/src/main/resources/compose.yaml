@@ -1,0 +1,28 @@
+services:
+  app:
+    image: openjdk:17-jdk-slim # Or your custom Java 17 image
+    ports:
+      - "8080:8080" # Adjust port as needed
+    volumes:
+      - ./target:/app # Mount your application's JAR file
+    command: java -jar /app/your-application.jar # Replace with your JAR name
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:tcp://db/~/mydb
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: ''
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update # or create, etc.
+
+  db:
+    image: oscarfonts/h2:latest # Or the official H2 image.
+    ports:
+      - "1521:1521" # H2 TCP port
+      - "81:81" #H2 console port
+    volumes:
+      - h2-data:/opt/h2-data # Persist data
+    environment:
+      H2_OPTIONS: -ifNotExists #Create database if it does not exist.
+
+volumes:
+  h2-data:
