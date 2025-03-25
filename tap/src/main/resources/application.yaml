@@ -13,3 +13,8 @@ spring:
       path: /h2-console # Customize the console path (optional)
   application:
     name: tap
+  main:
+    allow-bean-definition-overriding: true
+nas:
+  input:
+    path: path

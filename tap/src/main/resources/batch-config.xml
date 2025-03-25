@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Spring Batch Job Configuration -->
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.TaskExecutorJobLauncher">
+        <property name="jobRepository" ref="customJobRepository"/>
+        <property name="taskExecutor">
+            <bean class="org.springframework.core.task.SimpleAsyncTaskExecutor"/>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
+
+    <bean id="customJobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="url" value="jdbc:h2:mem:testdb"/>
+        <property name="driverClassName" value="org.h2.Driver"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
+    <!-- Step 1: Load CSV -->
+    <bean id="csvNasReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="file:${nas.input.path}"/>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="lineTokenizer">
+                    <bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="delimiter" value=","/>
+                        <property name="names" value="name,age"/>
+                    </bean>
+                </property>
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="targetType" value="com.unicredit.tap.model.IF03Mapping"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+
+    <!-- Step 2: Transform data into Java DataModel (Person) -->
+<!--    <bean id="csvProcessor" class="org.springframework.batch.item.processor.ItemProcessor">
+        <property name="delegate" ref="personProcessor"/>
+    </bean>-->
+
+    <!-- Step 3: Write the output as XML -->
+<!--    <bean id="xmlMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="contextPath" value="com.example.model"/>
+    </bean>-->
+
+<!--    <bean id="xmlWriter" class="org.springframework.batch.item.file.transform.FlatFileItemWriter">
+        <property name="resource" value="#{jobParameters['nas.input.path']}"/>
+        <property name="itemSeparator" value="\n"/>
+        <property name="lineAggregator">
+            <bean class="org.springframework.batch.item.file.transform.BeanWrapperLineAggregator">
+                <property name="lineTokenizer">
+                    <bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names" value="name,age"/>
+                    </bean>
+                </property>
+                <property name="fieldExtractor">
+                    <bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+                        <property name="names" value="name,age"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>-->
+
+    <!-- Define job -->
+    <bean id="step1" class="org.springframework.batch.core.step.tasklet.TaskletStep">
+        <property name="name" value="csvFileToDatabaseStep"/>
+        <property name="tasklet" ref="csvNasReader"/>
+    </bean>
+
+<!--    <bean id="step2" class="org.springframework.batch.core.step.tasklet.TaskletStep">
+        <property name="name" value="transformStep"/>
+        <property name="tasklet" ref="csvProcessor"/>
+    </bean>
+
+    <bean id="step3" class="org.springframework.batch.core.step.tasklet.TaskletStep">
+        <property name="name" value="writeXmlStep"/>
+        <property name="tasklet" ref="xmlWriter"/>
+    </bean>-->
+
+    <bean id="job" class="org.springframework.batch.core.job.SimpleJob">
+        <property name="name" value="transformJob"/>
+        <property name="steps">
+            <list>
+                <ref bean="step1"/>
+<!--                <ref bean="step2"/>
+                <ref bean="step3"/>-->
+            </list>
+        </property>
+    </bean>
+
+</beans>

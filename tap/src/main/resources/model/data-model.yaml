@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Data Model Definitions
+  version: 1.0.0
+paths: {}  # Empty paths, as we only want models
+components:
+  schemas:
+    IF03Mapping:
+      description: Represents a GFB Object mapping, flow IF03
+      type: object
+      properties:
+        file-id:
+          description: Columnname FILE_ID, Lenght 8 , Format C
+          type: string
+          maxLength: 8
+          example: IF03
+        dateOfAccounting:
+          description:  Columnname TRANSFER_DATE , Erstellungsdatum , Lenght 10 , Format C, "Date of account day, when file was generated (Date of MIP- File generation) Format dd-mm-yyyy"
+          type: string
+          maxLength: 10
+          example: 2021-01-29
+        accountingDate:
+          description:  Columnname ACCOUNTING_DATE , The Date of the position statement , Lenght 10 , Format C, dd-mm-yyyy
+          type: string
+          maxLength: 10
+          example: 2021-01-29
+        portfolioId:
+          description: Columnname PORTFOLIO_ID , Format description NEW
+          type: string
+          maxLength: 11
+          example: P0000000001
+        accountNumber:
+          description: Columnname CASH_ACCOUNT_NUMBER , description; KONTO-NUMMERN-SCHLUESSEL
+          type: number
+          example: 22222222
+        valuationDate:
+          description: Columnname VALUATION_DATE , description; Bewertungsdatum
+          type: string
+          maxLength: 10
+          example: 2021-01-29
+        assetValueBookingDate:
+          description: Columnname ASSET_VALUE , description; Kontostand Buchungstag; Format +9 (15),9 (3) could be zero
+          type: number
+          format: float
+          example: 236.790
+        cashAccountCurrency:
+          description: Columnname CASH_ACCOUNT_CCY , description; WAEHRUNG (ISO) ; Format in ISO (i.e. EUR)
+          type: string
+          maxLength: 3
+          example: EUR
+        exchangeRate:
+          description: Columnname EXCHANGE_RATE , description; EXCHANGE_RATE ; NEW; to manage VM5Invest in USD Format +9(7), 9(8) 8 digits (format like IF02)
+          type: number
+          format: decimal
+          example: 1
+      required:  # Correct placement of 'required'
+        - file-id
+        - dateOfAccounting
+        - accountingDate
+        - portfolioId
+        - accountNumber
+        - valuationDate
+        - assetValueBookingDate
+        - cashAccountCurrency
+        - exchangeRate

@@ -6,45 +6,95 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.4</version>
-        <relativePath/> </parent>
+        <relativePath/>
+    </parent>
     <groupId>com.unicredit</groupId>
     <artifactId>tap</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>tap</name>
     <description>Demo project for Spring Boot tap task</description>
     <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
     <properties>
         <java.version>17</java.version>
+        <jackson.version>2.18.3</jackson.version>
+        <openapi-generator-maven-plugin.version>6.6.0</openapi-generator-maven-plugin.version>
+        <spring.batch.version>5.2.2</spring.batch.version>
+        <spring.version>6.2.5</spring.version>
     </properties>
     <dependencies>
+        <!-- Spring Batch dependencies -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.batch/spring-batch-core -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-batch</artifactId>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>5.2.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
+            <artifactId>spring-boot-starter-batch</artifactId>
+            <version>3.4.4</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
+
+        <!-- Spring Core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <!-- Spring Context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <!-- CSV Reader -->
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-infrastructure</artifactId>
+            <version>${spring.batch.version}</version>
+        </dependency>
+
+        <!-- Spring Boot Starter Logging -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
+        <!-- Jackson XML (to write XML) -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.18.3</version>
+        </dependency>
+
+        <!-- Jackson for JSON (optional depending on your needs) -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.18.3</version>
+        </dependency>
+
+        <!-- Apache Commons IO for file operations -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+
+        <!-- DataSource-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.12.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -60,33 +110,114 @@
             <artifactId>h2</artifactId>
             <version>2.3.232</version>
         </dependency>
+        <!-- yaml -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!--   yaml to pojo     -->
+        <dependency>
+            <groupId>org.jsonschema2pojo</groupId>
+            <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <!-- jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.18.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.openapitools/jackson-databind-nullable -->
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.6</version>
+        </dependency>
+
+        <!-- jakarta -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
+        <!-- xml mapper -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-oxm -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>6.1.13</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/model/data-model.yaml</inputSpec>
+                            <generatorName>java</generatorName>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
+                            <configOptions>
+                                <sourceFolder>src/main/java</sourceFolder>
+                                <dateLibrary>java8</dateLibrary>
+                                <modelPackage>com.unicredit.tap.model</modelPackage>
+                                <generateApis>false</generateApis>
+                                <generateSupportingFiles>false</generateSupportingFiles>
+                                <library>native</library>
+                                <serializableModel>true</serializableModel>
+                                <useJakartaEe>true</useJakartaEe>
+                                <useJsonNullable>true</useJsonNullable>
+                                <skipTests>true</skipTests>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
+                    <source>17</source>
+                    <target>17</target>
+                    <excludes>
+                        <exclude>**/ApiClient.java</exclude>
+                        <exclude>**/ApiException.java</exclude>
+                        <exclude>**/Configuration.java</exclude>
+                        <exclude>**/Pair.java</exclude>
+                        <exclude>**/ApiResponse.java</exclude>
+                        <exclude>**/JSON.java</exclude>
+                        <exclude>**/AbstractOpenApiSchema.java</exclude>
+                        <exclude>**/RFC3339DateFormat.java</exclude>
+                        <exclude>**/ServerConfiguration.java</exclude>
+                        <exclude>**/ServerVariable.java</exclude>
+                        <exclude>**/Address.java</exclude>
+                        <exclude>**/Person.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
+                <version>3.4.4</version>
             </plugin>
         </plugins>
     </build>
