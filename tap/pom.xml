@@ -108,7 +108,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>2.3.232</version>
+            <scope>runtime</scope>
         </dependency>
         <!-- yaml -->
         <dependency>
@@ -155,7 +155,33 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>6.1.13</version>
+            <version>6.2.5</version>
+        </dependency>
+
+        <!-- xml dependencies -->
+        <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
@@ -172,7 +198,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/model/data-model.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/configuration/data-model.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <output>${project.build.directory}/generated-sources/openapi</output>
                             <configOptions>
@@ -209,8 +235,6 @@
                         <exclude>**/RFC3339DateFormat.java</exclude>
                         <exclude>**/ServerConfiguration.java</exclude>
                         <exclude>**/ServerVariable.java</exclude>
-                        <exclude>**/Address.java</exclude>
-                        <exclude>**/Person.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>

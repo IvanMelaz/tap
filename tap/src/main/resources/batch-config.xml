@@ -1,33 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd">
 
-    <!-- Spring Batch Job Configuration -->
-    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.TaskExecutorJobLauncher">
-        <property name="jobRepository" ref="customJobRepository"/>
-        <property name="taskExecutor">
-            <bean class="org.springframework.core.task.SimpleAsyncTaskExecutor"/>
-        </property>
-    </bean>
-
+    <!-- In Memory Transaction Manager -->
     <bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
 
-    <bean id="customJobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
-        <property name="transactionManager" ref="transactionManager"/>
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
+    <!-- Job Repository using ResourcelessJobRepository -->
+    <bean id="customJobRepository" class="org.springframework.batch.core.repository.support.ResourcelessJobRepository"/>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="url" value="jdbc:h2:mem:testdb"/>
-        <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="username" value="sa"/>
-        <property name="password" value=""/>
-    </bean>
-
-    <!-- Step 1: Load CSV -->
-    <bean id="csvNasReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+    <!-- Step 1: Load CSV and map to BeanWrapperFieldSetMapper -->
+    <bean id="itemReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="file:${nas.input.path}"/>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
@@ -46,61 +30,29 @@
         </property>
     </bean>
 
-
-    <!-- Step 2: Transform data into Java DataModel (Person) -->
-<!--    <bean id="csvProcessor" class="org.springframework.batch.item.processor.ItemProcessor">
-        <property name="delegate" ref="personProcessor"/>
-    </bean>-->
-
-    <!-- Step 3: Write the output as XML -->
-<!--    <bean id="xmlMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
-        <property name="contextPath" value="com.example.model"/>
-    </bean>-->
-
-<!--    <bean id="xmlWriter" class="org.springframework.batch.item.file.transform.FlatFileItemWriter">
-        <property name="resource" value="#{jobParameters['nas.input.path']}"/>
-        <property name="itemSeparator" value="\n"/>
-        <property name="lineAggregator">
-            <bean class="org.springframework.batch.item.file.transform.BeanWrapperLineAggregator">
-                <property name="lineTokenizer">
-                    <bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
-                        <property name="names" value="name,age"/>
-                    </bean>
-                </property>
-                <property name="fieldExtractor">
-                    <bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
-                        <property name="names" value="name,age"/>
-                    </bean>
-                </property>
-            </bean>
-        </property>
-    </bean>-->
-
-    <!-- Define job -->
-    <bean id="step1" class="org.springframework.batch.core.step.tasklet.TaskletStep">
-        <property name="name" value="csvFileToDatabaseStep"/>
-        <property name="tasklet" ref="csvNasReader"/>
-    </bean>
-
-<!--    <bean id="step2" class="org.springframework.batch.core.step.tasklet.TaskletStep">
-        <property name="name" value="transformStep"/>
-        <property name="tasklet" ref="csvProcessor"/>
-    </bean>
-
-    <bean id="step3" class="org.springframework.batch.core.step.tasklet.TaskletStep">
-        <property name="name" value="writeXmlStep"/>
-        <property name="tasklet" ref="xmlWriter"/>
-    </bean>-->
-
-    <bean id="job" class="org.springframework.batch.core.job.SimpleJob">
-        <property name="name" value="transformJob"/>
-        <property name="steps">
+    <!-- Jaxb2Marshaller Bean for XML Output -->
+    <bean id="jaxbMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="classesToBeBound">
             <list>
-                <ref bean="step1"/>
-<!--                <ref bean="step2"/>
-                <ref bean="step3"/>-->
+                <value>com.unicredit.tap.model.XmlMapping</value>
             </list>
         </property>
     </bean>
+
+    <!-- StaxEventItemWriter for Writing XML -->
+    <bean id="xmlItemWriter" class="org.springframework.batch.item.xml.StaxEventItemWriter">
+        <property name="resource" value="file:${nas.output.path}"/>
+        <property name="marshaller" ref="jaxbMarshaller"/>
+        <property name="rootTagName" value="persons"/>
+    </bean>
+
+    <!-- Define Job -->
+    <job id="IF03CvsJob" xmlns="http://www.springframework.org/schema/batch" job-repository="customJobRepository">
+        <step id="step1">
+            <tasklet>
+                <chunk reader="itemReader" writer="xmlItemWriter" commit-interval="1000"/>
+            </tasklet>
+        </step>
+    </job>
 
 </beans>
