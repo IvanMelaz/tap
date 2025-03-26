@@ -9,12 +9,12 @@ components:
       description: Represents a GFB Object mapping, flow IF03
       type: object
       properties:
-        file-id:
+        fileId:
           description: Columnname FILE_ID, Lenght 8 , Format C
           type: string
           maxLength: 8
           example: IF03
-        dateOfAccounting:
+        transferDate:
           description:  Columnname TRANSFER_DATE , Erstellungsdatum , Lenght 10 , Format C, "Date of account day, when file was generated (Date of MIP- File generation) Format dd-mm-yyyy"
           type: string
           maxLength: 10
@@ -29,21 +29,22 @@ components:
           type: string
           maxLength: 11
           example: P0000000001
-        accountNumber:
+        cashAccountNumber:
           description: Columnname CASH_ACCOUNT_NUMBER , description; KONTO-NUMMERN-SCHLUESSEL
           type: number
+          format: long
           example: 22222222
         valuationDate:
           description: Columnname VALUATION_DATE , description; Bewertungsdatum
           type: string
           maxLength: 10
           example: 2021-01-29
-        assetValueBookingDate:
+        assetValue:
           description: Columnname ASSET_VALUE , description; Kontostand Buchungstag; Format +9 (15),9 (3) could be zero
           type: number
           format: float
           example: 236.790
-        cashAccountCurrency:
+        cashAccountCcy:
           description: Columnname CASH_ACCOUNT_CCY , description; WAEHRUNG (ISO) ; Format in ISO (i.e. EUR)
           type: string
           maxLength: 3
@@ -54,12 +55,12 @@ components:
           format: decimal
           example: 1
       required:  # Correct placement of 'required'
-        - file-id
-        - dateOfAccounting
+        - fileId
+        - transferDate
         - accountingDate
         - portfolioId
-        - accountNumber
+        - cashAccountNumber
         - valuationDate
-        - assetValueBookingDate
-        - cashAccountCurrency
+        - assetValue
+        - cashAccountCcy
         - exchangeRate

@@ -15,6 +15,6 @@ spring:
       schema-locations: schema.sql
 nas:
   input:
-    path: path
+    path: file:./input.csv
   output:
     path: path

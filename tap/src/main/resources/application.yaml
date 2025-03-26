@@ -14,6 +14,6 @@ spring:
     allow-bean-definition-overriding: true
 nas:
   input:
-    path: path
+    path: file:./input.csv
   output:
       path: path

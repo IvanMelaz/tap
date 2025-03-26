@@ -1,32 +1,25 @@
 package com.unicredit.tap;
 
 import com.unicredit.tap.configuration.BatchConfig;
-import com.unicredit.tap.model.IF03Mapping;
-import com.unicredit.tap.model.XmlMapping;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobParameter;
 import org.springframework.batch.core.JobParameters;
-import org.springframework.batch.core.JobParametersBuilder;
-import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
-import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.repository.JobRestartException;
-import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.batch.item.xml.StaxEventItemWriter;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -46,15 +39,6 @@ class TapApplicationTests {
 	@Autowired
 	private JobRepository jobRepository;
 
-	@Autowired
-	private FlatFileItemReader<IF03Mapping> itemReader;
-
-	@Autowired
-	private StaxEventItemWriter<XmlMapping> xmlItemWriter;
-
-	@Autowired
-	private Jaxb2Marshaller jaxbMarshaller;
-
 	@Value("${nas.input.path}")
 	private String inputFilePath;
 
@@ -70,13 +54,18 @@ class TapApplicationTests {
 
 	@Test
 	void testJobWithInputPathParameterWrongPath() throws Exception {
+		// Create job parameters
+		Map<String, JobParameter<?>> jobParametersMap = new HashMap<>();
+		jobParametersMap.put("nas.input.path", new JobParameter("classpath:input.csv", String.class)); // Use "nas.input.path"
+		JobParameters jobParameters = new JobParameters(jobParametersMap);
+
 		// Launch the job using JobLauncherTestUtils
 		jobLauncherTestUtils = new JobLauncherTestUtils();
 		jobLauncherTestUtils.setJob(job);
 		jobLauncherTestUtils.setJobLauncher(jobLauncher);
 		jobLauncherTestUtils.setJobRepository(jobRepository);
 
-		JobExecution jobExecution = jobLauncherTestUtils.launchJob();
+		JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
 
 		// Check job status (e.g., it should be COMPLETED)
 		assertEquals("COMPLETED", jobExecution.getStatus().toString());

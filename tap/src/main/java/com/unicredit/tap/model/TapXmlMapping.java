@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * Simplify with Lombok
  */
-public class XmlMapping {
+public class TapXmlMapping {
 
     @XmlElement(name = "historicalExchangeRate")
     private String historicalExchangeRate;
@@ -28,5 +28,8 @@ public class XmlMapping {
 
     @XmlElement(name = "balance")
     private BigDecimal balance;
+
+    @XmlElement(name = "fileId")
+    private String fileId;
 
 }
