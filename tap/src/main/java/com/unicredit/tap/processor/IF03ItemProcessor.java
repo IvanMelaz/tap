@@ -1,24 +1,25 @@
 package com.unicredit.tap.processor;
 
+import com.unicredit.tap.mapper.IF03MappingToCashPositionMapper;
+import com.unicredit.tap.model.CashPosition;
 import com.unicredit.tap.model.IF03Mapping;
-import com.unicredit.tap.model.TapXmlMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 
-public class IF03ItemProcessor implements  ItemProcessor<IF03Mapping,TapXmlMapping> {
+public class IF03ItemProcessor implements  ItemProcessor<IF03Mapping, CashPosition> {
     private static final Logger log = LoggerFactory.getLogger(IF03ItemProcessor.class);
 
     @Override
-    public TapXmlMapping process(IF03Mapping item) throws Exception {
-        TapXmlMapping tapXmlMapping = new TapXmlMapping();
+    public CashPosition process(IF03Mapping item) throws Exception {
         log.info("Processing item: {}",item);
 
+
+        CashPosition cashPosition = IF03MappingToCashPositionMapper.INSTANCE.map(item);
         // Example of mapping fields from IF03Mapping to TapXmlMapping
-        tapXmlMapping.setFileId(item.getFileId()); // Assuming this is the correct mapping
-
-        log.info("Generating tapXmlMapping: {}",tapXmlMapping);
-
-        return tapXmlMapping;
+        log.info("Converting cashPosition: {}",cashPosition);
+        return cashPosition;
     }
+
+
 }

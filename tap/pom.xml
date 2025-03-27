@@ -14,13 +14,17 @@
     <name>tap</name>
     <description>Demo project for Spring Boot tap task</description>
     <url/>
+
     <properties>
         <java.version>17</java.version>
         <jackson.version>2.18.3</jackson.version>
         <openapi-generator-maven-plugin.version>6.6.0</openapi-generator-maven-plugin.version>
         <spring.batch.version>5.2.2</spring.batch.version>
         <spring.version>6.2.5</spring.version>
+        <org.projectlombok.version> 1.18.36</org.projectlombok.version>
+        <org.mapstruct.version>1.6.3</org.mapstruct.version>
     </properties>
+
     <dependencies>
         <!-- Spring Batch dependencies -->
         <!-- https://mvnrepository.com/artifact/org.springframework.batch/spring-batch-core -->
@@ -95,7 +99,19 @@
             <version>2.12.0</version>
         </dependency>
 
-        <!-- logback -->
+        <!-- Mapper -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.6.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.6.3</version>
+            <scope>provided</scope>
+        </dependency>
 
 
         <dependency>
@@ -219,8 +235,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <excludes>
                         <exclude>**/ApiClient.java</exclude>
                         <exclude>**/ApiException.java</exclude>
@@ -233,6 +249,25 @@
                         <exclude>**/ServerConfiguration.java</exclude>
                         <exclude>**/ServerVariable.java</exclude>
                     </excludes>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
+                        </path>
+                        <!-- This is needed when using Lombok 1.18.16 and above -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
+                        </path>
+                        <!-- Mapstruct should follow the lombok path(s) -->
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>

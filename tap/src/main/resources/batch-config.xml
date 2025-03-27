@@ -11,8 +11,8 @@
     <!-- Step 1: Load CSV and map to IF03Mapping -->
     <bean id="if03MappingItemReader" class="com.unicredit.tap.reader.If03MappingItemReader">
         <constructor-arg>
-            <bean class="org.springframework.core.io.ClassPathResource">
-                <constructor-arg value="if03_input.csv" />
+            <bean class="org.springframework.core.io.FileSystemResource">
+                <constructor-arg value="D:/if03_input.csv"/>
             </bean>
         </constructor-arg>
     </bean>
@@ -25,23 +25,21 @@
     <bean id="jaxbMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="classesToBeBound">
             <list>
-                <value>com.unicredit.tap.model.TapXmlMapping</value>
+                <value>com.unicredit.tap.model.CashPosition</value>
             </list>
         </property>
     </bean>
 
-    <!-- StaxEventItemWriter for Writing XML -->
-    <bean id="xmlItemWriter" class="org.springframework.batch.item.xml.StaxEventItemWriter">
-        <property name="resource" value="file:${nas.output.path}"/>
-        <property name="marshaller" ref="jaxbMarshaller"/>
-        <property name="rootTagName" value="values"/>
+    <!-- Writer - Writing XML -->
+    <bean id="jaxbTapXmlWriter" class="com.unicredit.tap.writer.CashPositionXmlWriter">
+        <constructor-arg value="D:\output.xml"/>
     </bean>
 
     <!-- Define Job -->
     <job id="IF03CvsJob" xmlns="http://www.springframework.org/schema/batch" job-repository="jobRepository">
         <step id="step1">
             <tasklet>
-                <chunk reader="if03MappingItemReader" processor="if03ItemProcessor" writer="xmlItemWriter"
+                <chunk reader="if03MappingItemReader" processor="if03ItemProcessor" writer="jaxbTapXmlWriter"
                        commit-interval="100"/>
             </tasklet>
         </step>

@@ -72,13 +72,13 @@ public class If03MappingItemReader implements ItemReader<IF03Mapping>, ItemStrea
     private IF03Mapping mapToIf03Mapping(String[] values) {
         IF03Mapping if03Mapping = new IF03Mapping();
         if03Mapping.setFileId(values[0]);
-        if03Mapping.setDateOfAccounting(values[1]);
+        if03Mapping.setTransferDate(values[1]);
         if03Mapping.setAccountingDate(values[2]);
         if03Mapping.setPortfolioId(values[3]);
-        if03Mapping.setAccountNumber(new BigDecimal(values[4]));
+        if03Mapping.setCashAccountNumber(new BigDecimal(values[4]));
         if03Mapping.setValuationDate(values[5]);
-        if03Mapping.setAssetValueBookingDate(Float.parseFloat(values[6]));
-        if03Mapping.setCashAccountCurrency(values[7]);
+        if03Mapping.setAssetValue(Float.parseFloat(values[6]));
+        if03Mapping.setCashAccountCcy(values[7]);
         if03Mapping.setExchangeRate(new BigDecimal(values[8]));
         return if03Mapping;
     }
