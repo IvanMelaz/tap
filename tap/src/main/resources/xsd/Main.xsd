@@ -1,0 +1,10 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.odcgroup.com"
+           xmlns="http://www.odcgroup.com"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.odcgroup.com/InfraPMS" schemaLocation="InfraPMS.xsd"/>
+    <xs:import namespace="http://www.odcgroup.com/PositionPMS" schemaLocation="PositionPMS.xsd"/>
+
+    <!-- Your elements and types here -->
+</xs:schema>

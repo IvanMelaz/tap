@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by ODYSSEY ASSET MANAGEMENT (ODYSSEY ASSET MANAGEMENT) -->
+<xs:schema targetNamespace="http://www.odcgroup.com/Request" xmlns:infra="http://www.odcgroup.com/InfraPMS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.odcgroup.com/Request" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.odcgroup.com/InfraPMS" schemaLocation="InfraPMS.xsd"/>
+	<xs:element name="Event">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DataGroup" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+					</xs:annotation>
+
+					<xs:complexType>
+
+						<xs:sequence>
+
+							<xs:element name="EventStatus" type="EventStatus" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="UpdateStatus" type="UpdateStatus" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+
+					</xs:complexType>
+
+				</xs:element>
+
+			</xs:sequence>
+
+			<xs:attribute name="output" type="xs:string" use="optional"/>
+
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+
+			<xs:attribute name="mode" type="infra:ModeEnum" use="optional"/>
+
+			<xs:attributeGroup ref="infra:businessEntity_AttrGrp"/>
+
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="EventStatus">
+
+		<xs:sequence>
+
+			<xs:element name="identifier">
+				<xs:annotation>
+					<xs:documentation>Unique identifier of the entity. It takes the same value as the identifier of the event to track (in the event table).
+
+As for all ids in the database, this attribute is technical and will normally never be seen by the user. This field is mandatory and is computed by the system.
+</xs:documentation>
+					<xs:appinfo>Entity : event_status - Attribute :  id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:positiveInteger">
+
+						<xs:totalDigits value="14"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="requestStatus" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>Acknowledgment of the event's message by the target system for data transmissions (i.e., an insert, an update, or a deletion), cancellation requests, and update requests.
+</xs:documentation>
+					<xs:appinfo>Entity : event_status - Attribute :  request_status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="errorReason" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates the nature of the error returned by the target system.
+</xs:documentation>
+					<xs:documentation>0. None
+Default value, corresponding to a NULL value (if there are errors, then it is recommended to use the value "No Problems" = 1)
+1. No Problems
+No errors during the data transmission or/and processing.
+2. System Down
+The system was down.
+3. Timeout
+A timeout happens during the data transmission or/and processing.
+4. Data Error
+Errors with the data
+5. Business Logic Error
+Errors with the business logic
+
+</xs:documentation>
+					<xs:appinfo>Entity : event_status - Attribute :  error_reason_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="errorInfo" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Provides additional details about the error(s) returned by the target system in a free text format.
+</xs:documentation>
+					<xs:appinfo>Entity : event_status - Attribute :  error_info_c - Datatype : uni_note_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="UpdateStatus">
+
+		<xs:sequence>
+
+			<xs:element name="code" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unique 'business' identifier of an operation.
+This code, combined with the 'status' and a sequence number, constitutes the unique key of an operation.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="status" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Status of the operation.
+It allows to distinguish between various stages in the processing of an operation, from a simulation purpose to an accounted operation, passing through the various order states.
+The use of states allows to describe the life cycle of operations in financial institutions. The number of states and their meaning depend on the internal organisation characterising each of them.
+There are special types of states that have a specific meaning:
+-   The "Accounting" Status, which makes the distinction between orders, and  the accounted positions. This particular status can be parametrised at system level.
+-   The "Simulation" Status, which distinguishes between simulated orders and accounted positions. This particular status can be parametrised at system level.
+-   The "Cancel" Status, which allows to keep trace of cancelled operations. This type of status can be parametrised at system level.
+
+As explained in the chapter named "The Fusion Process", positions with different states never merge together.
+If the user modifies the status of a position by updating it, no history will be kept.
+This field is mandatory.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+</xs:schema>

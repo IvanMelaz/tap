@@ -1,0 +1,4057 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by ODYSSEY ASSET MANAGEMENT (ODYSSEY ASSET MANAGEMENT) -->
+<xs:schema targetNamespace="http://www.odcgroup.com/InfraPMS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.odcgroup.com/InfraPMS" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="InfraPMS">
+		<xs:annotation>
+			<xs:documentation>Odyssey Infrastructure PMS Schema</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DataGroup" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+					</xs:annotation>
+
+					<xs:complexType>
+
+						<xs:sequence>
+
+							<xs:element name="Category" type="Category" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Codification" type="Codification" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : codification</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Country" type="Country" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : geographic</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Currency" type="Currency" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : currency</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Deposit" type="Deposit" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : deposit</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ExchangeRate" type="ExchangeRate" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : exch_rate</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Manager" type="Manager" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : manager</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Rating" type="Rating" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : rating</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Sector" type="Sector" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : sector</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="StockExchange" type="StockExchange" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : third_party</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ThirdParty" type="ThirdParty" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : third_party</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="TimeZone" type="TimeZone" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Type" type="Type" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : type</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Calendar" type="Calendar" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="DataGroup" type="DataGroup" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="DataGroupProfile" type="DataGroupProfile" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AccountingProfile" type="AccountingProfile" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AccountingRuleCompo" type="AccountingRuleCompo" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="BeAccProfileHisto" type="BeAccProfileHisto" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="FtConvention" type="FtConvention" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="FtRate" type="FtRate" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="FtConventionHistory" type="FtConventionHistory" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="BusinessEntityFtConvention" type="BusinessEntityFtConvention" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="FiscalPeriod" type="FiscalPeriod" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="FiscalPeriodCompo" type="FiscalPeriodCompo" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="BusinessEntity" type="BusinessEntity" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ThirdRelation" type="ThirdRelation" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+
+					</xs:complexType>
+
+				</xs:element>
+
+			</xs:sequence>
+
+			<xs:attribute name="output" type="xs:string" use="optional"/>
+
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+
+			<xs:attribute name="mode" type="ModeEnum" use="optional"/>
+
+			<xs:attributeGroup ref="businessEntity_AttrGrp"/>
+
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Type">
+
+		<xs:choice>
+
+			<xs:element name="basicType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="BasicType">
+
+							<xs:sequence>
+
+								<xs:element name="entity">
+									<xs:annotation>
+										<xs:appinfo>Entity : type - Attribute :  entity_dict_id - Datatype : </xs:appinfo>
+									</xs:annotation>
+
+									<xs:simpleType>
+
+										<xs:restriction base="xs:Name">
+
+											<xs:maxLength value="60"/>
+
+										</xs:restriction>
+
+									</xs:simpleType>
+
+								</xs:element>
+
+							</xs:sequence>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="basicSubType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="BasicSubType">
+
+							<xs:sequence>
+
+								<xs:element name="entity">
+									<xs:annotation>
+										<xs:appinfo>Entity : type - Attribute :  entity_dict_id - Datatype : </xs:appinfo>
+									</xs:annotation>
+
+									<xs:simpleType>
+
+										<xs:restriction base="xs:Name">
+
+											<xs:maxLength value="60"/>
+
+										</xs:restriction>
+
+									</xs:simpleType>
+
+								</xs:element>
+
+							</xs:sequence>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="clientType" type="BasicType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exchangeRateType" type="BasicType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrumentType" type="InstrumentType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrumentSubType" type="InstrumentSubType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrumentPriceType" type="BasicType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operationType" type="OperationType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operationSubType" type="OperationSubType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolioType" type="PortfolioType">
+				<xs:annotation>
+					<xs:appinfo>Entity : type</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentType" type="DocumentType">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="BasicType">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="attribute">
+						<xs:annotation>
+							<xs:documentation>Unique identifier of an attribute to which the type is associated, e.g. the types of an operation are associated to the "type_id" attribute in the operation entity.
+</xs:documentation>
+							<xs:appinfo>Entity : type - Attribute :  attribute_dict_id - Datatype : dict_t</xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:Name">
+
+								<xs:maxLength value="60"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="BasicSubType">
+
+		<xs:complexContent>
+
+			<xs:extension base="BasicType">
+
+				<xs:sequence>
+
+					<xs:element name="parentType" type="Identifier">
+						<xs:annotation>
+							<xs:documentation>Reference to the Parent Type (Type entity also). If the Parent Type is indicated, it's actually a sub type.
+</xs:documentation>
+							<xs:appinfo>Entity : type - Attribute :  parent_type_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="parentTypeAttribute">
+						<xs:annotation>
+							<xs:appinfo>Entity : type - Attribute :  parent_type.attribute_dict_id - Datatype : </xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:Name">
+
+								<xs:maxLength value="60"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="InstrumentType">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="attribute">
+						<xs:annotation>
+							<xs:documentation>Unique identifier of an attribute to which the type is associated, e.g. the types of an operation are associated to the "type_id" attribute in the operation entity.
+</xs:documentation>
+							<xs:appinfo>Entity : type - Attribute :  attribute_dict_id - Datatype : dict_t</xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:Name">
+
+								<xs:maxLength value="60"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+					<xs:element name="nature" type="InstrumentNatureEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Contains the instrument nature of the type. Is used mainly for selection purposes. It is possible to associate a type to an instrument with a different nature if the nature in the type table is equal to 0.
+
+</xs:documentation>
+							<xs:documentation>0.  All 
+ All
+1. Stock
+Stock.
+
+2. Fixed Income
+Fixed income.
+
+3. Option
+Option.
+
+4. Cash Account
+Cash account.
+
+5. Money Market
+Money market.
+
+6. Future
+Future.
+
+7. Forward
+Forward.
+
+8. Index
+Index.
+
+9. Rate
+Rate.
+
+10. Swap
+Swap.
+
+11. Discount Instrument
+Discount instrument.
+
+12. Commodity
+Commodity.
+
+13. Fund Share
+Fund share.
+
+14. Yield Curve
+Yield curve.
+
+15. Deliverable
+Deliverable.
+
+16. Debt
+Debt.
+
+17. Other
+Other.
+18. Option Bond
+Option bond.
+
+19. Convertible Bond
+Convertible bond.
+
+20. Forward Rate Agreement
+Forward rate agreement.
+
+21. Forex Swap
+Forex swap.
+
+22. Exotic Option
+Exotic option.
+
+23. Swaption
+Swaption.
+
+24. Mortgage-Backed Security
+Mortgage-backed security.
+
+25. Flow Instrument
+Flow instrument.
+
+26. Notional Instrument
+Notional instrument. This is a special nature of fictive instruments that can be used as objectives for Orders and Productivity functions.
+
+
+</xs:documentation>
+							<xs:appinfo>A subtype must have the same value of instr_nat_e as his parent.</xs:appinfo>
+							<xs:appinfo>Entity : type - Attribute :  instr_nat_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="InstrumentSubType">
+
+		<xs:complexContent>
+
+			<xs:extension base="InstrumentType">
+
+				<xs:sequence>
+
+					<xs:element name="parentType" type="Identifier">
+						<xs:annotation>
+							<xs:documentation>Reference to the Parent Type (Type entity also). If the Parent Type is indicated, it's actually a sub type.
+</xs:documentation>
+							<xs:appinfo>Entity : type - Attribute :  parent_type_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="parentTypeAttribute">
+						<xs:annotation>
+							<xs:appinfo>Entity : type - Attribute :  parent_type.attribute_dict_id - Datatype : </xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:Name">
+
+								<xs:maxLength value="60"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="OperationType">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="attribute">
+						<xs:annotation>
+							<xs:documentation>Unique identifier of an attribute to which the type is associated, e.g. the types of an operation are associated to the "type_id" attribute in the operation entity.
+</xs:documentation>
+							<xs:appinfo>Entity : type - Attribute :  attribute_dict_id - Datatype : dict_t</xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:Name">
+
+								<xs:maxLength value="60"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+					<xs:element name="nature" type="OperationNatureEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates the nature of the operation related to this type. It is possible to associate a typeto an operation with a different nature if the nature in the type table is equal to 0.
+</xs:documentation>
+							<xs:documentation>0.  All 
+1. Buy
+2. Sell
+3. Income
+4. Investment
+5. Withdrawal
+6. Fees   Taxes
+7. Adjustment
+8. Unit Issue
+9. Unit Redemption
+10. Transfer
+11. BP Transfer
+12. Locking
+13. Portfolio Transfer
+14. Book Value Adjustment
+15. Init
+16. Combined
+
+</xs:documentation>
+							<xs:appinfo>A subtype must have the same value of oper_nat_e as his parent.</xs:appinfo>
+							<xs:appinfo>Entity : type - Attribute :  oper_nat_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="OperationSubType">
+
+		<xs:complexContent>
+
+			<xs:extension base="OperationType">
+
+				<xs:sequence>
+
+					<xs:element name="parentType" type="Identifier">
+						<xs:annotation>
+							<xs:documentation>Reference to the Parent Type (Type entity also). If the Parent Type is indicated, it's actually a sub type.
+</xs:documentation>
+							<xs:appinfo>Entity : type - Attribute :  parent_type_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="parentTypeAttribute">
+						<xs:annotation>
+							<xs:appinfo>Entity : type - Attribute :  parent_type.attribute_dict_id - Datatype : </xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:Name">
+
+								<xs:maxLength value="60"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="PortfolioType">
+
+		<xs:complexContent>
+
+			<xs:extension base="BasicType"/>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="DocumentType">
+
+		<xs:complexContent>
+
+			<xs:extension base="BasicType"/>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="Identifier">
+
+		<xs:sequence>
+
+			<xs:element name="code" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference identifying the occurrence of an emtity to the ned user. In the case of financial instruments e.g. it can be the reference to the financial instrument as used by external data providers. The same applies for other entity natures, e,g, currency (one can use the iso codifcation) sector aso.
+</xs:documentation>
+					<xs:appinfo>Entity : Several Entities - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="synonym" type="Synonym" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="Manager">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="active" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Flag that indicates if a Manager is active or not.
+</xs:documentation>
+							<xs:documentation>0. No
+Not active
+1. Yes
+Active
+
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  active_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="certificationEnd" type="xs:dateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This date indicates when validity of manager certification ends.
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  certification_end_d - Datatype : datetime_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="certificationLevel" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This field gives the manager's certification level.
+</xs:documentation>
+							<xs:documentation>0. Not Certified
+Not Certified.
+1. Certified
+Certified.
+2. Advanced
+Advanced.
+3. Expert
+Expert.
+
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  certification_level_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="certificationStart" type="xs:dateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This date indicates when validity of manager certification begins.
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  certification_start_d - Datatype : datetime_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="emailAddress" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>E-mail address (optional) of the manager.
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  e_mail_address_c - Datatype : info_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="externalManager" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Specifies if a manager is an 'external manager'.
+This field is for information purposes only. Security is handled by the user profile.
+
+</xs:documentation>
+							<xs:documentation>0. No
+No. The manager is not an external manager.
+
+1. Yes
+Yes. External manager.
+
+
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  external_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="language" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the language of the manager.
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  language_dict_id - Datatype : dict_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="managerAccessRight" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the data profile associated to a manager. The data profile allows to determine which data the manager can access. This applies only to entities where the data security is managed (portfolio, third party, etc.).
+When the manager is linked to a user, the data, associated manager, and user must share the same data profile.
+</xs:documentation>
+							<xs:appinfo>Security profile. Put 'DEF_DATA_PROFILE' if no security managers groups have been defined.</xs:appinfo>
+							<xs:appinfo>Entity : manager - Attribute :  data_profile_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="managerGroup" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the security profile to which the occurrence belongs.
+This reference, which is mandatory, allows to control the user's accesses to the occurrence.
+</xs:documentation>
+							<xs:appinfo>Security profile. Put 'DEF_DATA_SECU_PROF' if no security managers groups have been defined.</xs:appinfo>
+							<xs:appinfo>Entity : manager - Attribute :  data_secu_prof_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="phoneNumber" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Phone number of a manager.
+
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  phone_c - Datatype : phone_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="wuiProfile" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This field holds information on the manager profile for the Triple'A Web User Interface (i.e. which screens he has access to). We deliver a few standard profiles (some of which are only used within the Advisor context).
+</xs:documentation>
+							<xs:documentation>0. Default
+The manager logged in to the Web interface uses the default profile.
+1. RelationshipManager
+The manager logged in to the Web interface inherits the Relationship Manager profile.
+2. MarketingOfficer
+The manager logged in to the Web interface inherits the Marketing Officer profile.
+3. FinancialAnalyst
+The manager logged in to the Web interface inherits the Financial Analyst profile.
+4. Developer
+The manager logged in to the Web interface inherits the Developer profile. Used only for on-site customisation.
+5. CdmSo
+The manager logged in to the Web interface inherits the CDM Security Officer profile.
+6. PmAdmin
+The manager logged into the Web interface inherits the Portfolio Administrator profile. He/she is then allowed to use the WUI CBI administration console, related to valuation and other configuration parameters for Portfolio Management and Analysis. (This is available for any realm but only working for a Triple'A realm)
+7. RetailManager
+The manager logged into the Web interface inherits the Retail profile. He/she is then allowed to use the WUI retail interface rather than the usual private banking interface. (This is available for any realm but only working for a Triple'A realm)
+8. Audit
+The manager logged into the Web interface inherits the Audit profile. He/she is then allowed to use the WUI audit console. (This is available for any realm but only working for a Triple'A realm)
+9. Admin
+10. PortfolioManagerForT24
+11. PortfolioManager
+
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  wui_profile_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="wuiRole" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This flied hold information on the manager profile for the Triple'A Web User Interface (i.e. what action he can do). We deliver in standard two roles (used only within the Advisor context).
+</xs:documentation>
+							<xs:documentation>0. Assistant
+The manager logged in on the Web interface has all validation rights.
+1. HeadManager
+The manager logged in on the Web interface has no validation right.
+2. RlsAdmin
+3. AlertAdmin
+
+</xs:documentation>
+							<xs:appinfo>Entity : manager - Attribute :  wui_role_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+				<xs:attribute name="description" type="xs:string" use="optional"/>
+
+				<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="ThirdRelation">
+
+		<xs:sequence>
+
+			<xs:element name="relationship" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_relation - Attribute :  relationship_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="30">
+
+							<xs:annotation>
+
+								<xs:documentation>Other Relative</xs:documentation>
+
+							</xs:annotation>
+
+						</xs:enumeration>
+
+						<xs:enumeration value="42">
+
+							<xs:annotation>
+
+								<xs:documentation>Spouse</xs:documentation>
+
+							</xs:annotation>
+
+						</xs:enumeration>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="relThirdEntity" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_relation - Attribute :  rel_third_party_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="thirdEntity" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_relation - Attribute :  third_party_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="ThirdParty">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="active" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Describes the state of the Third Party. If a Third Party is inactive, it does not appear on default selection lists.
+</xs:documentation>
+							<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  active_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="beginDate" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>It is the date when the third party is foreseen as active
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  begin_d - Datatype : datetime_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="businessEntityComposition" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:appinfo>Entity : bus_entity_third_compo</xs:appinfo>
+						</xs:annotation>
+
+						<xs:complexType>
+
+							<xs:complexContent>
+
+								<xs:extension base="businessEntityComposition">
+
+									<xs:attribute name="mode" use="optional">
+
+										<xs:simpleType>
+
+											<xs:restriction base="xs:string">
+
+												<xs:enumeration value="delete"/>
+
+											</xs:restriction>
+
+										</xs:simpleType>
+
+									</xs:attribute>
+
+								</xs:extension>
+
+							</xs:complexContent>
+
+						</xs:complexType>
+
+					</xs:element>
+
+					<xs:element name="currency" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Mandatory reference currency of the third party.
+Is used when consolidation at the client level are requested.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  currency_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clientRole" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates that this third party will appear on the client selection list.
+</xs:documentation>
+							<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  client_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="classification" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Manages the client's categorisation. By default, it is set to None. 
+
+This field may be modified by authorised users if a professional client requests to be treated as a retail client for the Mifid compliance.
+</xs:documentation>
+							<xs:documentation>0. None
+ None
+1. Retail
+ Retail
+2. Professionnal Per Se
+Professional per se
+3. Professionnal on Request
+ Professional on request
+4. Eligible Counterparty
+5. Institutional
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  cli_classif_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:unsignedByte">
+
+								<xs:enumeration value="0"/>
+
+								<xs:enumeration value="1"/>
+
+								<xs:enumeration value="2"/>
+
+								<xs:enumeration value="3"/>
+
+								<xs:enumeration value="4"/>
+
+								<xs:enumeration value="5"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+					<xs:element name="custodianRole" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates that this third party will appear on the custodian selection list.
+
+</xs:documentation>
+							<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  custodian_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="externalBank" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Flag to determine if the third party is an external bank.
+</xs:documentation>
+							<xs:documentation>0. No
+Specifies that the third party is not an external bank.
+
+1. Yes
+Specifies that the third party is an external bank.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  bank_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="emailAddress" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>E-mail address of the third party.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  e_mail_address_c - Datatype : info_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="faxNumber" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The fax number of the third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  fax_c - Datatype : phone_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="intermediaryRole" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates that this third party will appear on the financial intermediary selection list.
+</xs:documentation>
+							<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  intermediary_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="islamicCompliance" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicate if the client requires banking services/products that are Islamic finance compliant.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  islamic_compliance_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="issuerRole" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates that this third party will appear on the issuer selection list.
+
+</xs:documentation>
+							<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  issuer_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="language" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Unique identifier of a language. These values are fixed by OAMS and  cannot be modified.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  language_dict_id - Datatype : dict_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="manager" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Manager, who is in charge of the client relationship. 
+This attribute is for information purpose only.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  manager_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="phoneNumber" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The telephone number of the third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  phone_c - Datatype : phone_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="rating" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:appinfo>Entity : rating</xs:appinfo>
+						</xs:annotation>
+
+						<xs:complexType>
+
+							<xs:complexContent>
+
+								<xs:extension base="IssuerRatingAttribution">
+
+									<xs:attribute name="mode" use="optional">
+
+										<xs:simpleType>
+
+											<xs:restriction base="xs:string">
+
+												<xs:enumeration value="delete"/>
+
+											</xs:restriction>
+
+										</xs:simpleType>
+
+									</xs:attribute>
+
+								</xs:extension>
+
+							</xs:complexContent>
+
+						</xs:complexType>
+
+					</xs:element>
+
+					<xs:element name="residenceCountry" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Legal residence of the third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  resid_geo_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="riskCountry" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Risk country of the third party. 
+In particular, for custodians, counterparties, security issuers.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  risk_geo_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="sector" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:appinfo>Entity : sector</xs:appinfo>
+						</xs:annotation>
+
+						<xs:complexType>
+
+							<xs:complexContent>
+
+								<xs:extension base="IssuerSectorAttribution">
+
+									<xs:attribute name="mode" use="optional">
+
+										<xs:simpleType>
+
+											<xs:restriction base="xs:string">
+
+												<xs:enumeration value="delete"/>
+
+											</xs:restriction>
+
+										</xs:simpleType>
+
+									</xs:attribute>
+
+								</xs:extension>
+
+							</xs:complexContent>
+
+						</xs:complexType>
+
+					</xs:element>
+
+					<xs:element name="taxationCountry" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Fiscal residence of the third party. 
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  tax_geo_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="thirdPartyGroup" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the security profile to which the occurrence belongs. This is a mandatory reference that is used to control Triple'A Core user access and Triple'A Web user access to the third party (like clients, markets, issuers, ...).
+
+Remarks:
+A Triple'A Core user is defined through the entity [User := appl_user]
+A Triple'A Web user is defined through the entity [Manager := manager]
+</xs:documentation>
+							<xs:appinfo>Security profile. Put 'DEF_DATA_SECU_PROF' if no security managers groups have been defined.</xs:appinfo>
+							<xs:appinfo>Entity : third_party - Attribute :  data_secu_prof_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="type" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates the type of third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+				<xs:attribute name="description" type="xs:string" use="optional"/>
+
+				<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="StockExchange">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="active" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Describes the state of the Third Party. If a Third Party is inactive, it does not appear on default selection lists.
+</xs:documentation>
+							<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  active_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="calendar" type="xs:token" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the calendar of the third party.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  calendar_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="cashSettlementDays" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates the number of days after trading in which a cash payment is usually settled.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  cash_settle_days_n - Datatype : tinyint_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="closeTime" type="xs:time" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Time between 00:00 and 23:59.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  close_time_d - Datatype : datetime_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="currency" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Mandatory reference currency of the third party.
+Is used when consolidation at the client level are requested.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  currency_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="marketVenueType" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This field is used to specify whether an instrument is traded on a regulated market or not. (What we call also Venue). 
+
+</xs:documentation>
+							<xs:documentation>0. None
+ None
+1. Regulated Market
+ Traded on a regulated market
+2. Not Regulated Market
+ Not traded on a regulated market.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  market_venue_type_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="referenceIndex" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>If the third party is a market, it indicates the main index of this market.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  index_instr_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="residGeo" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Legal residence of the third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  resid_geo_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="securitiesSettlementDays" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates the number of days after securities trading in which a securities trade is usually settled.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  sec_settle_days_n - Datatype : tinyint_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="settlementDaysRule" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates the settlement days rule of the market. The settlement days rule can have the following values. 
+
+Business - To consider the calendar of the market to count the business days. 
+Calendar - To consider the calendar days for counting, regardless if they are on a weekend, holiday or not.
+</xs:documentation>
+							<xs:documentation>0. None
+Indicates the settlement days rule of the market.
+1. Business
+Indicates the settlement days rule of the market. The settlement days rule can having Business considers the calendar of the market to count the business days. 
+
+
+
+
+2. Calendar
+Indicates the settlement days rule of the market. The settlement days rule having 
+Calendar considers the calendar days for counting, regardless if they are on a weekend, holiday or not. 
+
+
+
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  settle_days_rule_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:unsignedByte">
+
+								<xs:enumeration value="0"/>
+
+								<xs:enumeration value="1"/>
+
+								<xs:enumeration value="2"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+					<xs:element name="type" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates the type of third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+				<xs:attribute name="description" type="xs:string" use="optional"/>
+
+				<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="Deposit">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>Unique identifier of an occurrence as seen by the user.
+
+</xs:documentation>
+					<xs:appinfo>Entity : deposit - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="custodian" type="Identifier">
+				<xs:annotation>
+					<xs:documentation>Reference to the custodian (i.e. a 'third party') that the deposit is linked to. This linking is obligatory.
+
+</xs:documentation>
+					<xs:appinfo>Entity : deposit - Attribute :  third_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="name" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Short name of an occurrence. The short name does not have to be unique.
+
+</xs:documentation>
+					<xs:appinfo>Entity : deposit - Attribute :  name - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="ChildSector">
+
+		<xs:complexContent>
+
+			<xs:extension base="ParentSector">
+
+				<xs:sequence>
+
+					<xs:element name="parentSector" type="Identifier">
+						<xs:annotation>
+							<xs:documentation>Indicates to which parent sector the sub-sector belongs.
+
+</xs:documentation>
+							<xs:appinfo>Entity : sector - Attribute :  parent_sector_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="ParentSector">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="codification">
+						<xs:annotation>
+							<xs:documentation>Reference to the codification of an occurrence (e.g. Nace, Reuters,...).
+This codification, which is part of the unique key in this table, must be of the 'sector' type (i.e. it must have 'sector' as an entity_dict_id').
+
+</xs:documentation>
+							<xs:appinfo>Entity : sector - Attribute :  codification_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:token">
+
+								<xs:maxLength value="60"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="Sector">
+
+		<xs:choice>
+
+			<xs:element name="issuerSector" type="ParentSector">
+				<xs:annotation>
+					<xs:appinfo>Entity : sector</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issuerChildSector" type="ChildSector">
+				<xs:annotation>
+					<xs:appinfo>Entity : sector</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrumentSector" type="ParentSector">
+				<xs:annotation>
+					<xs:appinfo>Entity : sector</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrumentChildSector" type="ChildSector">
+				<xs:annotation>
+					<xs:appinfo>Entity : sector</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="Rating">
+
+		<xs:choice>
+
+			<xs:element name="issuerRating" type="BasicRating">
+				<xs:annotation>
+					<xs:appinfo>Entity : rating</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrumentRating" type="BasicRating">
+				<xs:annotation>
+					<xs:appinfo>Entity : rating</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="BasicRating">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="agency">
+						<xs:annotation>
+							<xs:documentation>Indicates the codification used for this rating (e.g. S P, Moody's,...)
+
+</xs:documentation>
+							<xs:appinfo>Entity : rating - Attribute :  codification_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:token">
+
+								<xs:maxLength value="60"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+					<xs:element name="rank" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates the importance of each rating within the codification. The highest rank is the best creditworthiness.
+E.g. AAA has rank 10
+AA has rank 9 ,...
+
+Note that this rank is not only used to order the ratings when displaying them. It is also used to compare ratings given by different codifications (e.g. BB of Standard   Poor's is equivalent to bb+ of Moody's). This information is also used in the "Check Strategy" function in the "minimum ranking" objectives.
+
+</xs:documentation>
+							<xs:appinfo>Entity : rating - Attribute :  rank_n - Datatype : smallint_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="ExchangeRate">
+
+		<xs:sequence>
+
+			<xs:element name="currency" type="Identifier">
+				<xs:annotation>
+					<xs:documentation>When the system parameter Exchange Inverse Flag is false, the exchange rate must be expressed as the number of units of the  underlying currency  equivalent to one unit of this  currency .
+When the system parameter Exchange Inverse Flag is true, the exchange rate must be expressed as the number of units of this  currency  equivalent to one unit of the  underlying currency .
+
+</xs:documentation>
+					<xs:appinfo>Entity : exch_rate - Attribute :  currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="datetime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>The date at which an exchange rate is set. The exchange rate is valid from this time until the next occurrence of an exchange rate for the same pair of currencies.
+
+</xs:documentation>
+					<xs:appinfo>Entity : exch_rate - Attribute :  exch_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="market" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the market in which the exchange rate was made.
+
+</xs:documentation>
+					<xs:appinfo>Entity : exch_rate - Attribute :  market_third_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="provider" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the provider or source of the exchange rate, e.g. Reuters, Switzerland (as a market place), etc.
+
+</xs:documentation>
+					<xs:appinfo>Entity : exch_rate - Attribute :  third_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rate" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>When the system parameter Exchange Inverse Flag is false, the exchange rate must be expressed as one unit of the  currency  in the  underlying currency .
+When the system parameter Exchange Inverse Flag is true, the exchange rate must be expressed as one unit of the  underlying currency  in the  currency .
+
+</xs:documentation>
+					<xs:appinfo>Entity : exch_rate - Attribute :  exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to a type of exchange rate. This reference is part of the identifier of an occurrence. The reference can be null. Used when retreiving the best exchange rate for a particular date from several exchange rates.
+
+</xs:documentation>
+					<xs:appinfo>Entity : exch_rate - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="underlyCurrency" type="Identifier">
+				<xs:annotation>
+					<xs:documentation>When the system parameter Exchange Inverse Flag is false, the exchange rate must be expressed as the number of units of this  underlying currency  equivalent to one unit of the  currency .
+When the system parameter Exchange Inverse Flag is true, the exchange rate must be expressed as the number of units of the  currency  equivalent to one unit of this  underlying currency .
+
+</xs:documentation>
+					<xs:appinfo>Underly exchange currency, which should be the system currency.</xs:appinfo>
+					<xs:appinfo>Entity : exch_rate - Attribute :  underly_currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quoteFactor" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If provided, this factor is used to divide the prices coming from market data loader
+</xs:documentation>
+					<xs:appinfo>Entity : exch_rate - Attribute :  not_attribute_triplea1 - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inverseFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If provided, this flag is used to inverse the prices coming from market data loader
+</xs:documentation>
+					<xs:appinfo>Entity : exch_rate - Attribute :  not_attribute_triplea2 - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exchangeRateInverseFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Corresponding to the EXCH_INVERSE_FLAG paramter of Triple'A
+</xs:documentation>
+					<xs:appinfo>Entity : exch_rate - Attribute :  not_attribute_triplea3 - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="Synonym">
+
+		<xs:sequence>
+
+			<xs:element name="active" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Determines if the synonym is active.
+</xs:documentation>
+					<xs:documentation>0. No
+No
+1. Yes
+Yes
+
+</xs:documentation>
+					<xs:appinfo>Entity : synonym - Attribute :  active_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="beginDate" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the date on which the synonym becomes available or is issued
+</xs:documentation>
+					<xs:appinfo>Entity : synonym - Attribute :  begin_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>Code of a synonym. 
+Please note that for all the occurrences of the same entity type and the same codification, this code must be unique. This ensures that, in a codification, a synonym is a substitute for the unique 'business' identifier of an occurrence. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : synonym - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="codification">
+				<xs:annotation>
+					<xs:documentation>Reference to the codification characterising a synoym. Several synonyms may be associated to the same occurrence in a table, provided that they are characterised by a different codification.
+Please note that the codification used in defining a synonym must be of the 'synonym' type, i.e. its 'entity_dict_id' must reference the 'synonym' table.
+
+</xs:documentation>
+					<xs:appinfo>Entity : synonym - Attribute :  codification_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="endDate" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the date on which the synonym is no longer available
+</xs:documentation>
+					<xs:appinfo>Entity : synonym - Attribute :  end_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : synonym - Attribute :  syn_status_id.codification.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="UserDefinedField">
+
+		<xs:sequence>
+
+			<xs:element name="name">
+				<xs:annotation>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="value" type="xs:string">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:NMTOKEN">
+
+						<xs:enumeration value="date"/>
+
+						<xs:enumeration value="datetime"/>
+
+						<xs:enumeration value="string"/>
+
+						<xs:enumeration value="decimal"/>
+
+						<xs:enumeration value="integer"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="Denomination">
+
+		<xs:sequence>
+
+			<xs:element name="language" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Unique identifier of a language. This value is fixed by OAMS and cannot be modified.
+
+</xs:documentation>
+					<xs:appinfo>Must be one of : en, fr, ge, nl, it, sp, pt</xs:appinfo>
+					<xs:appinfo>Entity : denomination - Attribute :  language_dict_id - Datatype : dict_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="longName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Text of the denomination of an object in a specific language.
+
+</xs:documentation>
+					<xs:appinfo>Entity : denomination - Attribute :  denom - Datatype : uni_info_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="DataGroup">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>Unique identifier as seen by the user.
+
+</xs:documentation>
+					<xs:appinfo>Entity : data_secu_prof - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token"/>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="DataGroupProfile">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>Unique identifier as seen by the user.
+
+</xs:documentation>
+					<xs:appinfo>Entity : data_secu_prof - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token"/>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="DataGroupProfileComposition" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="DataGroupProfileComposition">
+
+							<xs:attribute name="mode" use="optional">
+
+								<xs:simpleType>
+
+									<xs:restriction base="xs:string">
+
+										<xs:enumeration value="delete"/>
+
+									</xs:restriction>
+
+								</xs:simpleType>
+
+							</xs:attribute>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="DataGroupProfileComposition">
+
+		<xs:sequence>
+
+			<xs:element name="deleteAuthorisation" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies if the user is authorised to delete occurrences in secured tables (1) or not (0).  If not, s/he only has the right to view and possibly update occurrences (see auth_update_f).
+
+</xs:documentation>
+					<xs:documentation>0. No
+No. The user is not authorised to delete occurrences in secured tables.
+
+1. Yes
+Yes. The user is authorised to delete occurrences in secured tables.
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : data_prof_compo - Attribute :  auth_delete_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="updateAuthorisation" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies if a user can update an occurrence in a secured table (1) or just view it (0).
+
+</xs:documentation>
+					<xs:documentation>0. No
+No. The user is not authorised to update the table.
+
+1. Yes
+Yes. The user is authorised to update the table.
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : data_prof_compo - Attribute :  auth_update_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataGroup" type="DataGroup" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="Notepad">
+
+		<xs:sequence>
+
+			<xs:element name="date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The date and time when the note was entered.
+
+</xs:documentation>
+					<xs:appinfo>Entity : notepad - Attribute :  note_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:union memberTypes="xs:date xs:dateTime"/>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="note" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Text of a notepad.
+
+</xs:documentation>
+					<xs:appinfo>Entity : notepad - Attribute :  note_c - Datatype : uni_note_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="title" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Title of the notepad.
+Used for selection purposes.
+
+</xs:documentation>
+					<xs:appinfo>Entity : notepad - Attribute :  title_c - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the type of a notepad. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : notepad - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="user" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the user who is the issuer of a notepad.
+
+</xs:documentation>
+					<xs:appinfo>Entity : notepad - Attribute :  user_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="Country">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="currency" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Foreign key on Currency
+</xs:documentation>
+							<xs:appinfo>Entity : geographic - Attribute :  currency_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="nature">
+						<xs:annotation>
+							<xs:documentation>Indicates whether the Geographical Area is a country.
+</xs:documentation>
+							<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : geographic - Attribute :  country_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:unsignedByte">
+
+								<xs:enumeration value="0"/>
+
+								<xs:enumeration value="1"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+				</xs:sequence>
+
+				<xs:attribute name="description" type="xs:string" use="optional"/>
+
+				<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="Currency">
+
+		<xs:complexContent>
+
+			<xs:extension base="PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="country" type="Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the country that issues the currency.
+This reference can be null.
+
+</xs:documentation>
+							<xs:appinfo>Entity : currency - Attribute :  geographic_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="euroConvertionDate" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Date of the euro conversion of a currency. From this date on, the exchange rate is no longer  provided and any cross exchange rate that involves this currency is based on the exchange rate beween the euro and this currency at this date.
+The above behaviour only works if the EURO_EXCH_CONV_DATE system parameter is different from NULL. If so, the behaviour applies from this date. 
+
+</xs:documentation>
+							<xs:appinfo>Entity : currency - Attribute :  euro_conv_d - Datatype : datetime_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="euroExchangeRate" type="xs:decimal" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The fixed exchange rate between the currency and the euro, if the currency is an "in" currency.
+Note that the exchange rate is expressed as the value of 1 euro in the currency.
+
+</xs:documentation>
+							<xs:appinfo>It implies that belgian franc has a exchange rate of 40.3399 againt the EUR.</xs:appinfo>
+							<xs:appinfo>Entity : currency - Attribute :  euro_exch_rate - Datatype : exchange_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="rank" type="xs:nonNegativeInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Defines the user-attributed importance of each currency.
+Used for selection or display purposes.
+The most important currencies are ranked lowest.
+Ranks are not unique.
+If no rank is attributed, the code of the currency is used as the sorting criterion. For example, alphabetical ISO codes start with AED (Emirate Dirham), AFA (Afghani), ALL  (Albanian Lek), etc.
+
+</xs:documentation>
+							<xs:appinfo>Entity : currency - Attribute :  rank_n - Datatype : smallint_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="roundingRule" type="RoundingRuleEnum">
+						<xs:annotation>
+							<xs:documentation>Method to round the amount in this currency to the rounding amount.
+</xs:documentation>
+							<xs:documentation>1. Nearest
+2. Down
+3. Up
+
+</xs:documentation>
+							<xs:appinfo>Entity : currency - Attribute :  round_rule_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="roundingUnit" type="RoundingUnitEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The rounding unit of a currency. Defines the precision used when amounts are computed. The default value is 1.
+
+(The display precision is defined in the "Display Format" of a format Element.) 
+
+</xs:documentation>
+							<xs:documentation>0.  None 
+None. No rounding.
+
+1. 0.01
+Rounding to 0.01.
+
+2. 0.05
+Rounding to 0.05.
+
+3. 0.1
+Rounding to 0.1.
+
+4. 0.5
+Rounding to 0.05.
+
+5. 1
+Rounding to 1.
+
+6. 5
+Rounding to 5.
+
+7. 10
+Rounding to 10.
+
+8. 50
+Rounding to 50.
+
+9. 100
+Rounding to 100.
+
+10. 0.005
+Rounding to 0.005.
+
+11. 0.001
+Rounding to 0.001.
+
+12. 0.00001
+Rounding to 0.00001.
+
+13. 0.0001
+Rounding to 0.0001.
+
+14. 0.0000001
+Rounding to 0.0000001.
+
+
+</xs:documentation>
+							<xs:appinfo>Entity : currency - Attribute :  round_unit_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+				<xs:attribute name="description" type="xs:string" use="optional"/>
+
+				<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="IssuerSectorAttribution">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>Reference to the sector characterising the sector attribution.
+Plese note the fact that this reference is not directly present as a foreign key in the Instrument/Third Party tables means that it is possible to associate several sectors to the same occurrence, provided that they are characterised by a different 'sector' codification (e.g. Nace,...), and also to historise these sector attributions.
+
+</xs:documentation>
+					<xs:appinfo>Entity : sector_attrib - Attribute :  sector_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="codification">
+				<xs:annotation>
+					<xs:documentation>Unique technical identifier of an occurrence. This indentifier is not seen by the end user.
+
+</xs:documentation>
+					<xs:appinfo>Entity : sector_attrib - Attribute :  codification_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="validityDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Validity date of a sector attribution.
+This date is part of the unique key in this table and allows to historise the sector attributed to an occurrence.
+
+</xs:documentation>
+					<xs:appinfo>Entity : sector_attrib - Attribute :  validity_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="IssuerRatingAttribution">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>Reference to the rating which is associated to an occurrence through a rating attribution.
+Please note that this reference is not directly present as a foreign key in the Instrument/Third Party tables means that it is possible to associate several ratings to the same occurrence, provided that they are characterised by a different 'rating' codification (e.g. Moodys, S P,...), and also to historise these rating attributions.
+
+</xs:documentation>
+					<xs:appinfo>Entity : rating_attrib - Attribute :  rating_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="agency">
+				<xs:annotation>
+					<xs:documentation>Reference to the codification which necessarily characterises an occurrence of 'rating attribution'.
+This codification must be a 'sector' codification.
+There can be only on rating attribution attached to an occurrence per codification. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : rating_attrib - Attribute :  codification_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="validityDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates from which date on this specific rating is applicable. This date is part of the unique key in this table and allows to historise the ratings attributed to an occurrence.
+
+</xs:documentation>
+					<xs:appinfo>Entity : rating_attrib - Attribute :  begin_d - Datatype : date_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="PMSObject">
+
+		<xs:sequence>
+
+			<xs:element name="code" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference identifying the occurrence of an emtity to the ned user. In the case of financial instruments e.g. it can be the reference to the financial instrument as used by external data providers. The same applies for other entity natures, e,g, currency (one can use the iso codifcation) sector aso.
+</xs:documentation>
+					<xs:appinfo>Entity : Several Entities - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="synonym" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>Entity : synonym</xs:appinfo>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="Synonym">
+
+							<xs:attribute name="mode" use="optional">
+
+								<xs:simpleType>
+
+									<xs:restriction base="xs:string">
+
+										<xs:enumeration value="delete"/>
+
+									</xs:restriction>
+
+								</xs:simpleType>
+
+							</xs:attribute>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="shortName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Short name of the occurrence used mainly for display. Reporting may use the long anme (denomination) which may be translated in different languages.
+</xs:documentation>
+					<xs:appinfo>Entity : Several Entities - Attribute :  name - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="longName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Long name (descriptive) of the occurrence.(can be multi-lingual and is mainly used for reporting purposes. If there is no translation in a given language, the name is used.
+</xs:documentation>
+					<xs:appinfo>Entity : Several Entities - Attribute :  denom - Datatype : info_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="multilingualLongName" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>Entity : denomination</xs:appinfo>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="Denomination">
+
+							<xs:attribute name="mode" use="optional">
+
+								<xs:simpleType>
+
+									<xs:restriction base="xs:string">
+
+										<xs:enumeration value="delete"/>
+
+									</xs:restriction>
+
+								</xs:simpleType>
+
+							</xs:attribute>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="notepad" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>Entity : notepad</xs:appinfo>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="Notepad">
+
+							<xs:attribute name="mode" use="optional">
+
+								<xs:simpleType>
+
+									<xs:restriction base="xs:string">
+
+										<xs:enumeration value="delete"/>
+
+									</xs:restriction>
+
+								</xs:simpleType>
+
+							</xs:attribute>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="userDefinedField" type="UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Fields created on site which can accommodate various additonal/customized information that fit specific site  needs and may not be found in the main triple'A data model attributes.
+</xs:documentation>
+					<xs:appinfo>Entity : Several Entities - Attribute :  userDefinedField - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="Codification">
+
+		<xs:choice>
+
+			<xs:element name="ratingCodification" type="BasicCodificaton">
+				<xs:annotation>
+					<xs:appinfo>Entity : codification</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sectorCodification" type="BasicCodificaton">
+				<xs:annotation>
+					<xs:appinfo>Entity : codification</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="synonymCodification" type="SynonymCodification">
+				<xs:annotation>
+					<xs:appinfo>Entity : codification</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="SynonymCodification">
+
+		<xs:complexContent>
+
+			<xs:extension base="BasicCodificaton">
+
+				<xs:sequence>
+
+					<xs:element name="minimumNumberOfCharacter" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The minimum length of the Synonym Codes defined for the Codification.
+
+</xs:documentation>
+							<xs:appinfo>Entity : codification - Attribute :  syn_min_length_n - Datatype : tinyint_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="maximumNumberOfCharacter" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The maximum length of the Synonym Codes defined for the Codification.
+
+</xs:documentation>
+							<xs:appinfo>Entity : codification - Attribute :  syn_max_length_n - Datatype : tinyint_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="BasicCodificaton">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>'Business' identifier of an occurrence. The unique key is a combination of the code and the entity_dict_id and syn_entity_dict_id values.
+
+</xs:documentation>
+					<xs:appinfo>Entity : codification - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="entity">
+				<xs:annotation>
+					<xs:documentation>entity_dict_id:Specifies the entity type (table) that the codification applies to.
+In particular, this field indicates if the entity type is a synonym, a rating agency or a sector attributing agency.
+The authorised entity types in this case are the following: sector, rating, synonym.
+
+
+syn_entity_dict_id:Specifies the table that the synonym codification references.
+The authorised entity types are the following: currency, geographic, sector, third party, portfolio, manager, instrument, deposit and dict_language.
+
+</xs:documentation>
+					<xs:appinfo>Entity : codification - Attribute :  entity_dict_id or syn_entity_dict_id - Datatype : dict_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:Name">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="longName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Long name of the occurrence. Mainly used for reporting purposes (see the multilingual feature).
+
+</xs:documentation>
+					<xs:appinfo>Entity : codification - Attribute :  denom - Datatype : uni_info_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="multilingualLongname" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="Denomination">
+
+							<xs:attribute name="mode" use="optional">
+
+								<xs:simpleType>
+
+									<xs:restriction base="xs:string">
+
+										<xs:enumeration value="delete"/>
+
+									</xs:restriction>
+
+								</xs:simpleType>
+
+							</xs:attribute>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="shortName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Name of a codification.
+
+</xs:documentation>
+					<xs:appinfo>Entity : codification - Attribute :  name - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:simpleType name="InstrumentNatureEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="9"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="11"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="13"/>
+			<xs:enumeration value="14"/>
+			<xs:enumeration value="15"/>
+			<xs:enumeration value="16"/>
+			<xs:enumeration value="17"/>
+			<xs:enumeration value="18"/>
+			<xs:enumeration value="19"/>
+			<xs:enumeration value="20"/>
+			<xs:enumeration value="21"/>
+			<xs:enumeration value="22"/>
+			<xs:enumeration value="23"/>
+			<xs:enumeration value="24"/>
+			<xs:enumeration value="25"/>
+			<xs:enumeration value="26"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OperationNatureEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="9"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="11"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="13"/>
+			<xs:enumeration value="14"/>
+			<xs:enumeration value="15"/>
+			<xs:enumeration value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LanguageEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="en"/>
+			<xs:enumeration value="fr"/>
+			<xs:enumeration value="de"/>
+			<xs:enumeration value="it"/>
+			<xs:enumeration value="nl"/>
+			<xs:enumeration value="es"/>
+			<xs:enumeration value="pt"/>
+			<xs:enumeration value="sv"/>
+			<xs:enumeration value="ru"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoundingRuleEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoundingUnitEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="9"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="11"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="13"/>
+			<xs:enumeration value="14"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ModeEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="INSUPD"/>
+			<xs:enumeration value="UPDINS"/>
+			<xs:enumeration value="INSERT"/>
+			<xs:enumeration value="UPDATE"/>
+			<xs:enumeration value="DELETE"/>
+			<xs:enumeration value="MBK"/>
+			<xs:enumeration value="COPY"/>
+			<xs:enumeration value="UPDATE_STATUS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Calendar">
+
+		<xs:sequence>
+
+			<xs:element name="code" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unique 'business' identifier of an occurrence.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="shortName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Name of an occurrence.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar - Attribute :  name - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="longName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Long name of an occurrence.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar - Attribute :  denom - Datatype : uni_info_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="addDaysNumber" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the default number of days added to a calendar when business days are added to a date.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar - Attribute :  add_days_num_n - Datatype : tinyint_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="businessDateRule" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Rule indicating the type of business day calendar.
+
+</xs:documentation>
+					<xs:documentation>0. Default
+The business calendar is based on a regular calendar. In this case a valid business date is any date which is not a holiday.
+
+1. Specific Business Dates
+The business calendar is based on a list of explicit business dates.
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar - Attribute :  bus_date_rule_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nextBusinessDateRule" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Rule used to determine the next business day after a particular date.
+
+</xs:documentation>
+					<xs:documentation>0. Default
+Equivalent to the NEXT rule (see the "Next" possible value).
+
+1. Next
+With the NEXT business day conventions, payments are postponed to the first business day after the scheduled payment day. This corresponds to the Following convention.
+
+2. Next in Month
+With the NEXTINMONTH business day convention, payments are postponed to the next business day as with the NEXT value, unless the business day is in the following month. In this case, payments are brought forward to the first business day before the scheduled payment day.
+This is the same as the Modified Following convention.
+
+3. Closest
+With the CLOSEST business day convention, the actual payment day is moved to the business day closest to the scheduled payment day.
+
+4. Closest in Month
+With the CLOSESTINMONTH business day convention, the actual payment day is found as for the CLOSEST convention, unless this day happens to be in a different month from the month of the scheduled payment day. In this case, the payment day is moved to the closest business day of the same month.
+
+5. Previous
+With the PREVIOUS business day convention, payments are brought forward to the first business day before the scheduled payment day.
+
+6. Previous in Month
+With the PREVIOUSINMONTH business day convention, the actual payment day is determined in the same way as for the PREVIOUS convention, unless it falls in a month that precedes the month of the scheduled payment day. In this case, the payment day is moved to the first business day after the scheduled payment day.
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar - Attribute :  next_bus_date_rule_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="multilingualLongName" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="Denomination">
+
+							<xs:attribute name="mode" use="optional">
+
+								<xs:simpleType>
+
+									<xs:restriction base="xs:string">
+
+										<xs:enumeration value="delete"/>
+
+									</xs:restriction>
+
+								</xs:simpleType>
+
+							</xs:attribute>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="calendarDate" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="CalendarDate">
+
+							<xs:attribute name="mode" use="optional">
+
+								<xs:simpleType>
+
+									<xs:restriction base="xs:string">
+
+										<xs:enumeration value="delete"/>
+
+									</xs:restriction>
+
+								</xs:simpleType>
+
+							</xs:attribute>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="calendarConvention" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="CalendarConvention">
+
+							<xs:attribute name="mode" use="optional">
+
+								<xs:simpleType>
+
+									<xs:restriction base="xs:string">
+
+										<xs:enumeration value="delete"/>
+
+									</xs:restriction>
+
+								</xs:simpleType>
+
+							</xs:attribute>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="userDefinedField" type="UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:simpleType name="BusinessDateRule">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NextBusinessDateRule">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CalendarDate">
+
+		<xs:sequence>
+
+			<xs:element name="date" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Calendar date.
+Depending on its nature, this date is either a 'settlement' or a 'holiday' date.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_date - Attribute :  date_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="longName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Long name of an occurrence.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_date - Attribute :  denom - Datatype : uni_info_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nature" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>Nature of a calendar date.
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_date - Attribute :  nature_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="multilingualLongName" type="Denomination" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="CalendarConvention">
+
+		<xs:sequence>
+
+			<xs:element name="anchorDay" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>Anchor day. The holiday or business day is calculated on the basis of this day.
+
+</xs:documentation>
+					<xs:documentation>0.  None 
+1. January
+January.
+
+2. February
+February.
+
+3. March
+March.
+
+4. April
+April.
+
+5. May
+May.
+
+6. June
+June.
+
+7. July
+July.
+
+8. August
+August.
+
+9. September
+September.
+
+10. October
+October.
+
+11. November
+November.
+
+12. December
+December.
+
+13. Easter sunday
+Easter Sunday.
+
+14. Pentecost sunday
+Pentecost Sunday.
+
+15. Advent sunday
+Advent Sunday.
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_conv - Attribute :  anchor_day_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="day" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Only used if the anchor is JANUARY_1, FEBRUARY_1, ..., or DECEMBER_1. It then holds the day of the month. For example, if day = 10 and anchor = JUNE_1, this means that the anchor day is June 10th.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_conv - Attribute :  day_n - Datatype : tinyint_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="longName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Long name of an occurrence.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_conv - Attribute :  denom - Datatype : uni_info_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nature" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Calendar date convention nature.
+
+</xs:documentation>
+					<xs:documentation>1. Business
+Business.
+
+2. Holiday
+Holiday.
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_conv - Attribute :  nature_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="offsetSaturday" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Moves the holiday offset if the holiday falls on a Saturday.
+
+</xs:documentation>
+					<xs:documentation>0.  None 
+Holiday offset not moved.
+
+1. After
+Holiday offset moved to the next business day.
+
+2. Before
+Holiday offset moved to the preceding business day.
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_conv - Attribute :  offset_sat_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="offsetSunday" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Moves holiday offset if the holiday falls on a Sunday.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_conv - Attribute :  offset_sun_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="weekdayNumber" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>Number of weekdays in relation to the anchor day.
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_conv - Attribute :  term_n - Datatype : tinyint_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="weekday" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>Weekday is the unit used to quote the offsetting of days when you define holidays or business days generically.
+
+</xs:documentation>
+					<xs:documentation>0.  None 
+1. Monday
+Monday.
+
+2. Tuesday
+Tuesday.
+
+3. Wednesday
+Wednesday.
+
+4. Thursday
+Thursday.
+
+5. Friday
+Friday.
+
+6. Saturday
+Saturday.
+
+7. Sunday
+Sunday.
+
+8. Day
+Day.
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : calendar_conv - Attribute :  weekday_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="multilingualLongName" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+
+				<xs:complexType>
+
+					<xs:complexContent>
+
+						<xs:extension base="Denomination">
+
+							<xs:attribute name="mode" use="optional">
+
+								<xs:simpleType>
+
+									<xs:restriction base="xs:string">
+
+										<xs:enumeration value="delete"/>
+
+									</xs:restriction>
+
+								</xs:simpleType>
+
+							</xs:attribute>
+
+						</xs:extension>
+
+					</xs:complexContent>
+
+				</xs:complexType>
+
+			</xs:element>
+
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="businessEntityComposition">
+
+		<xs:sequence>
+
+			<xs:element name="businessEntity" type="Identifier">
+				<xs:annotation>
+					<xs:documentation>References the business entity.
+</xs:documentation>
+					<xs:appinfo>Entity : bus_entity_third_compo - Attribute :  bus_entity_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mainBusinessEntity" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Specifies whether the business entity is the main business entity of the third party.
+</xs:documentation>
+					<xs:documentation>0. False
+The business entity is not the main business entity
+1. True
+The business entity is the main business entity
+
+</xs:documentation>
+					<xs:appinfo>Entity : bus_entity_third_compo - Attribute :  main_bus_entity_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="role" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the role that the business entity has on the third party.
+</xs:documentation>
+					<xs:documentation>0. None
+None.
+1. Compliance
+The business entity is in charge of the third party's compliance
+2. Administration
+The business entity administrates the third party
+3. Management
+The business entity manages the third party (for example by trying to get new investments from clients)
+4. Advisor
+No business meanings for a third party
+5. Manager
+No business meanings for a third party
+6. Assistant
+No business meanings for a third party
+
+</xs:documentation>
+					<xs:appinfo>Entity : bus_entity_third_compo - Attribute :  role_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>References the type of business entity third party composition.
+</xs:documentation>
+					<xs:appinfo>Entity : bus_entity_third_compo - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="MBObject">
+
+		<xs:sequence>
+
+			<xs:element name="name" type="xs:token">
+				<xs:annotation>
+					<xs:documentation>Name of model bank attribute.
+</xs:documentation>
+					<xs:appinfo>Entity : Several Entities - Attribute :  mbField_name - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Value of model bank attribute.
+</xs:documentation>
+					<xs:appinfo>Entity : Several Entities - Attribute :  mbField_value - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Type of model bank attribute.
+</xs:documentation>
+					<xs:appinfo>Entity : Several Entities - Attribute :  mbField_type - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:NMTOKEN">
+
+						<xs:enumeration value="date"/>
+
+						<xs:enumeration value="datetime"/>
+
+						<xs:enumeration value="string"/>
+
+						<xs:enumeration value="decimal"/>
+
+						<xs:enumeration value="integer"/>
+
+						<xs:enumeration value="boolean"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="mbFields">
+
+		<xs:sequence>
+
+			<xs:element name="mbField" type="MBObject" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Model Bank Attribute.
+</xs:documentation>
+					<xs:appinfo>Entity : Several Entities - Attribute :  mbField - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="Category">
+
+		<xs:sequence>
+
+			<xs:element name="categoryDescription" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description of the category
+</xs:documentation>
+					<xs:appinfo>Entity : category - Attribute :  category_desc_c - Datatype : uni_note_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="categoryGroup" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Data Security Profile of the category. A category is secured. The goal is to defined categories for a group of users.
+</xs:documentation>
+					<xs:appinfo>Entity : category - Attribute :  data_secu_prof_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>Unique code of a category. It is the primary key.
+</xs:documentation>
+					<xs:appinfo>Entity : category - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="nature" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>Nature of the category specifying the type of the entity that is categorized.
+</xs:documentation>
+					<xs:documentation>0.  All 
+1. Third Party
+2. Portfolio
+3. Instrument
+4. Document
+5. Activity
+
+</xs:documentation>
+					<xs:appinfo>Entity : category - Attribute :  nature_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:attributeGroup name="businessEntity_AttrGrp">
+		<xs:attribute name="businessEntity" type="xs:string" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="TimeZone">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>The Time zone code matches an IANA time zone database ID. 
+The IANA ID identifies a location by continent or ocean and then by the name of the location. Example: America/Chicago
+
+</xs:documentation>
+					<xs:appinfo>Entity : timezone - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="dbTimeZoneF" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Identifies the time zone used by the database to store timestamp data type values. This time zone becomes the reference for the script key words when converting date time values.  Only one single time zone can be set to true. 
+Even if you do not work in multiple time zones, this attribute setting is still required.
+</xs:documentation>
+					<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+					<xs:appinfo>Entity : timezone - Attribute :  db_timezone_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="longName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Denomination of the time zone. This field is optional.
+
+</xs:documentation>
+					<xs:appinfo>Entity : timezone - Attribute :  denom - Datatype : uni_info_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="shortName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Name of the time zone (not necessarily unique). 
+By default the name has the code value.
+This field is mandatory.
+</xs:documentation>
+					<xs:appinfo>Entity : timezone - Attribute :  name - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="utcOffset" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates the offset or time difference between the time zone local time and the Universal Time Coordinated (UTC).
+Examples: 
+- Offset = 10:00:  is 10 hours after UTC.
+- Offset = -2:00 is 2 hours before UTC. 
+This offset is just an indication the system doesn't use. 
+The system relies on library (ICU) that supports the daylight saving time (DST) for  transformation between time zones in key word script.
+
+</xs:documentation>
+					<xs:appinfo>Entity : timezone - Attribute :  utc_offset - Datatype : tz_offset_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:simpleType name="AccountingProfileNatureEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AccountingProfile">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:appinfo>Entity : acc_profile - Attribute :  code - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="classification" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : acc_profile - Attribute :  classification_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nature" type="AccountingProfileNatureEnum">
+				<xs:annotation>
+					<xs:appinfo>Entity : acc_profile - Attribute :  nature_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="AccountingRuleCompo">
+
+		<xs:sequence>
+
+			<xs:element name="accProfile" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : accounting_rule_compo - Attribute :  accounting_rule_histo_id.acc_profile_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>Entity : accounting_rule_compo - Attribute :  accounting_rule_histo_id.begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fusionRule">
+				<xs:annotation>
+					<xs:appinfo>Entity : accounting_rule_compo - Attribute :  fusion_rule_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="0"/>
+
+						<xs:enumeration value="1"/>
+
+						<xs:enumeration value="2"/>
+
+						<xs:enumeration value="3"/>
+
+						<xs:enumeration value="4"/>
+
+						<xs:enumeration value="5"/>
+
+						<xs:enumeration value="6"/>
+
+						<xs:enumeration value="7"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="instrList" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : accounting_rule_compo - Attribute :  instr_list_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxLotMngt">
+				<xs:annotation>
+					<xs:appinfo>Entity : accounting_rule_compo - Attribute :  tax_lot_mngt_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="0"/>
+
+						<xs:enumeration value="1"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="taxLotOpRule" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : accounting_rule_compo - Attribute :  tax_lot_rule_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="BeAccProfileHisto">
+
+		<xs:sequence>
+
+			<xs:element name="accProfile" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : be_acc_profile_histo - Attribute :  acc_profile_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>Entity : be_acc_profile_histo - Attribute :  begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="businessEntity" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : be_acc_profile_histo - Attribute :  business_entity_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endD" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : be_acc_profile_histo - Attribute :  end_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="FtConvention">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_convention - Attribute :  code - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="classification" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_convention - Attribute :  classification_id.entity_dict_id.sqlname_c - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nature" type="AccountingProfileNatureEnum">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_convention - Attribute :  nature_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxStatus" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_convention - Attribute :  tax_status_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="FtRate">
+
+		<xs:sequence>
+
+			<xs:element name="beginD" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_rate - Attribute :  ft_rate_history_id.begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="discountFactor" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_rate - Attribute :  discount_percent_p - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ftConvention" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_rate - Attribute :  ft_rate_history_id.convention_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrList" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_rate - Attribute :  instr_list_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="longCapTaxRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_rate - Attribute :  long_cap_tax_rate_p - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="longTermPeriod" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_rate - Attribute :  long_term_period_n - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="longTermPeriodUnit">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_rate - Attribute :  long_term_period_unit_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="0"/>
+
+						<xs:enumeration value="1"/>
+
+						<xs:enumeration value="2"/>
+
+						<xs:enumeration value="3"/>
+
+						<xs:enumeration value="4"/>
+
+						<xs:enumeration value="5"/>
+
+						<xs:enumeration value="6"/>
+
+						<xs:enumeration value="7"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="rank" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_rate - Attribute :  rank_n - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="shortCapTaxRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_rate - Attribute :  short_cap_tax_rate_p - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="FtRateHistory">
+
+		<xs:sequence>
+
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ftConvention" type="Identifier">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="FtConventionHistory">
+
+		<xs:sequence>
+
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_convention_histo - Attribute :  begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_convention_histo - Attribute :  portfolio_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxConvention" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : ft_convention_histo - Attribute :  ft_convetion_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="BusinessEntityFtConvention">
+
+		<xs:sequence>
+
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>Entity : be_ft_convention_histo - Attribute :  begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="businessEntity" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : be_ft_convention_histo - Attribute :  business.entiy_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ftConvention" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : be_ft_convention_histo - Attribute :  ft_convention - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="FiscalPeriod">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period - Attribute :  code - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="name" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period - Attribute :  name - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="FiscalPeriodCompo">
+
+		<xs:sequence>
+
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period_compo - Attribute :  begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="entityType" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period_compo - Attribute :  linked_entity_dict_id.sqlname_c - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fiscalPeriod" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period_compo - Attribute :  fiscal_period_histo_id.fiscal_period_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fiscalPeriodFreq" type="xs:integer">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period_compo - Attribute :  fiscal_period_freq_n - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fiscalPeriodFreqUnit">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period_compo - Attribute :  fiscal_period_freq_unit_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="0"/>
+
+						<xs:enumeration value="1"/>
+
+						<xs:enumeration value="2"/>
+
+						<xs:enumeration value="3"/>
+
+						<xs:enumeration value="4"/>
+
+						<xs:enumeration value="5"/>
+
+						<xs:enumeration value="6"/>
+
+						<xs:enumeration value="7"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="instrumentNature" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period_compo - Attribute :  begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nature_e">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period_compo - Attribute :  nature_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="1"/>
+
+						<xs:enumeration value="2"/>
+
+						<xs:enumeration value="3"/>
+
+						<xs:enumeration value="4"/>
+
+						<xs:enumeration value="5"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="operationNature" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>Entity : fiscal_period_compo - Attribute :  operation_nat_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="FiscalPeriodHistory">
+
+		<xs:sequence>
+
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endD" type="xs:date" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fiscalPeriod" type="Identifier">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="BusinessEntity">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>Unique business identifier of the business entity that is displayed to the end user. This field is mandatory.
+
+</xs:documentation>
+					<xs:appinfo>Entity : business_entity - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="fiscalPeriod" type="Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : business_entity - Attribute :  fiscal_period_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+</xs:schema>

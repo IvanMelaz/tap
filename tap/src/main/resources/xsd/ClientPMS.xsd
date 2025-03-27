@@ -1,0 +1,1794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by ODYSSEY ASSET MANAGEMENT (ODYSSEY ASSET MANAGEMENT) -->
+<xs:schema targetNamespace="http://www.odcgroup.com/ClientPMS" xmlns:infra="http://www.odcgroup.com/InfraPMS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.odcgroup.com/ClientPMS" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.odcgroup.com/InfraPMS" schemaLocation="InfraPMS.xsd"/>
+	<xs:element name="ClientPMS">
+		<xs:annotation>
+			<xs:documentation>Odyssey Client PMS Schema</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DataGroup" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+					</xs:annotation>
+
+					<xs:complexType>
+
+						<xs:sequence>
+
+							<xs:element name="Portfolio" type="Portfolio" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : portfolio</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Client" type="Client" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : third_party</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PortfolioChronologicalData" type="PorfolioChronologicalData" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PortfolioPerformanceStorageParameter" type="PerformanceStorageParameter" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AccountingProfileHisto" type="AccountingProfileHisto" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ThirdAccProfileHisto" type="ThirdAccProfileHisto" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ThirdPartyFtConvention" type="ThirdPartyFtConvention" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="InducementFees" type="InducementFees" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PortfolioEvent" type="PortfolioEvent" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ClientDocument" type="ClientDocument" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ClientDocumentLink" type="ClientDocumentLink" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+
+					</xs:complexType>
+
+				</xs:element>
+
+			</xs:sequence>
+
+			<xs:attribute name="output" type="xs:string" use="optional"/>
+
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+
+			<xs:attribute name="mode" type="infra:ModeEnum" use="optional"/>
+
+			<xs:attributeGroup ref="infra:businessEntity_AttrGrp"/>
+
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Client">
+
+		<xs:complexContent>
+
+			<xs:extension base="infra:PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="active" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Describes the state of the Third Party. If a Third Party is inactive, it does not appear on default selection lists.
+</xs:documentation>
+							<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  active_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="businessEntityComposition" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:appinfo>Entity : bus_entity_third_compo</xs:appinfo>
+						</xs:annotation>
+
+						<xs:complexType>
+
+							<xs:complexContent>
+
+								<xs:extension base="infra:businessEntityComposition">
+
+									<xs:attribute name="mode" use="optional">
+
+										<xs:simpleType>
+
+											<xs:restriction base="xs:string">
+
+												<xs:enumeration value="delete"/>
+
+											</xs:restriction>
+
+										</xs:simpleType>
+
+									</xs:attribute>
+
+								</xs:extension>
+
+							</xs:complexContent>
+
+						</xs:complexType>
+
+					</xs:element>
+
+					<xs:element name="clientAddress" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:appinfo>Entity : address</xs:appinfo>
+						</xs:annotation>
+
+						<xs:complexType>
+
+							<xs:complexContent>
+
+								<xs:extension base="ClientAddress">
+
+									<xs:attribute name="mode" use="optional">
+
+										<xs:simpleType>
+
+											<xs:restriction base="xs:string">
+
+												<xs:enumeration value="delete"/>
+
+											</xs:restriction>
+
+										</xs:simpleType>
+
+									</xs:attribute>
+
+								</xs:extension>
+
+							</xs:complexContent>
+
+						</xs:complexType>
+
+					</xs:element>
+
+					<xs:element name="clientCategory" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:appinfo>Entity : third_party - Attribute :  category - Datatype : </xs:appinfo>
+						</xs:annotation>
+
+						<xs:complexType>
+
+							<xs:complexContent>
+
+								<xs:extension base="ClientCategory">
+
+									<xs:attribute name="mode" use="optional">
+
+										<xs:simpleType>
+
+											<xs:restriction base="xs:string">
+
+												<xs:enumeration value="delete"/>
+
+											</xs:restriction>
+
+										</xs:simpleType>
+
+									</xs:attribute>
+
+								</xs:extension>
+
+							</xs:complexContent>
+
+						</xs:complexType>
+
+					</xs:element>
+
+					<xs:element name="clientGroup" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the security profile to which the occurrence belongs. This is a mandatory reference that is used to control Triple'A Core user access and Triple'A Web user access to the third party (like clients, markets, issuers, ...).
+
+Remarks:
+A Triple'A Core user is defined through the entity [User := appl_user]
+A Triple'A Web user is defined through the entity [Manager := manager]
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  data_secu_prof_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clientLanguage" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Unique identifier of a language. These values are fixed by OAMS and  cannot be modified.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  language_dict_id - Datatype : dict_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clientType" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates the type of third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="emailAddress" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>E-mail address of the third party.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  e_mail_address_c - Datatype : info_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="faxNumber" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The fax number of the third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  fax_c - Datatype : phone_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="gdprChild" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Considered as child for General Data Protection Regulation.
+
+This attribute is only used in the context of the WM integration.
+</xs:documentation>
+							<xs:documentation>0. No
+No
+1. Yes
+Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  gdpr_child_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="gdprInscope" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>In scope for General Data Protection Regulation.
+
+This attribute is only used in the context of the WM integration.
+</xs:documentation>
+							<xs:documentation>0. No
+No
+1. Yes
+Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  gdpr_inscope_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="gdprProcessRestriction" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>In scope for General Data Protection Regulation.
+
+This attribute is only used in the context of the WM integration.
+</xs:documentation>
+							<xs:documentation>0. No
+No
+1. Yes
+Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  gdpr_process_restriction_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="islamicCompliance" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicate if the client requires banking services/products that are Islamic finance compliant.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  islamic_compliance_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="lastContactDate" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Date of last contact
+
+This attribute is only used in the context of the WM integration.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  last_contact_d - Datatype : datetime_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="legalEntityStatus" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Corresponds to the Wealth Suite Front Office CRM (WM) legal entity status. Used in the context of data integration of legal entities from Wealth Suite Front Office CRM (WM) into third parties in Wealth Suite Front Office PM (TAP). This enumerated field can be extended by adding new permitted values (no overwrite of the standard ones).
+</xs:documentation>
+							<xs:documentation>0. None
+None.
+1. Prospect - New
+Not yet signed a contract with the bank. Corresponds to the Wealth Suite Front Office CRM (WM) legal entity status PR1 (1 ? Prospect ? New).
+2. Client
+Signed a contract with the bank. Corresponds to the Wealth Suite Front Office CRM (WM) legal entity status CL (Client)
+3. Ex-client
+Was client but has no longer a contract with the bank. Corresponds to the Wealth Suite Front Office CRM (WM) legal entity status EX (Ex-Client).
+4. Active
+5. Business Affiliate
+6. Business Associate
+7. Client Advisor
+8. Client Associated
+9. Client Related
+10. Inactive
+11. Other
+12. Prospect - Qualified
+13. Prospect - Opportunity
+14. Prospect - Lost
+15. Client-Related (user defined)
+16. Referrer
+17. Suspect
+18. Unknown
+19. Ex-Client Associated
+20. Ex-Client Related
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  legal_entity_status_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="mainBusinessEntity" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>References a business entity defined as the main business entity of the third party (for example, a client, a broker, or a custodian). Only one main business entity is allowed per third party. If the user defines another main business entity, then it automatically overrides the previous main business entity.
+
+Remarks:
+If Triple'A Plus is plugged on the back-office system T24, it is recommended (for cohesion between the two systems) that the main business entity represents a record of the T24 application COMPANY.
+
+If the main business entity represents a record of the T24 application COMPANY, it is recommended (for cohesion between the two systems) that it represents a master or a lead company.
+
+The main business entity can also indirectly be defined on the third party through the business entity third party composition (table bus_entity_third_compo) using the attribute Main Business Entity (main_bus_entity_f).
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  main_business_entity_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="manager" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Manager, who is in charge of the client relationship. 
+This attribute is for information purpose only.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  manager_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="nextContactDate" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Planned date for next contact
+
+This attribute is only used in the context of the WM integration.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  next_contact_d - Datatype : datetime_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="phoneNumber" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The telephone number of the third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  phone_c - Datatype : phone_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reportingCurrency" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Mandatory reference currency of the third party.
+Is used when consolidation at the client level are requested.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  currency_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="residenceCountry" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Legal residence of the third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  resid_geo_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="riskCountry" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Risk country of the third party. 
+In particular, for custodians, counterparties, security issuers.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  risk_geo_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="riskLevel" type="xs:decimal" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Define the level of risk client accepts.
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  risk_level_n - Datatype : number_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="riskProfile" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Qualify the client risk profile.
+</xs:documentation>
+							<xs:documentation>0. Risk Averse
+Risk Averse.
+1. Moderate Risk
+Moderate Risk.
+2. High Risk
+High Risk.
+3. Advanced Risk
+Advanced Risk.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  risk_profile_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="taxationCountry" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Fiscal residence of the third party. 
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  tax_geo_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="telexNumber" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The mask number of the third party.
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  telex_c - Datatype : phone_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="thirdPartyLegalEntityType" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Corresponds to the Wealth Suite Front Office CRM (WM) legal entity type. Used in the context of data integration of legal entities from Wealth Suite Front Office CRM (WM) into third parties in Wealth Suite Front Office PM (TAP). This enumerated field cannot be extended.
+</xs:documentation>
+							<xs:documentation>0. None
+None.
+1. Customer
+A contractual agreement, relationship between a person/organization and the bank. Corresponds to the Wealth Suite Front Office CRM (WM) legal entity type CUST (customer).
+2. Person
+An individual (physical person). Corresponds to the Wealth Suite Front Office CRM (WM) legal entity type CONT (contact).
+3. Organization
+A company, partnership, or other formal group. Corresponds to the Wealth Suite Front Office CRM (WM) legal entity type ORGA (organization).
+4. Economic Group
+
+</xs:documentation>
+							<xs:appinfo>Entity : third_party - Attribute :  legal_entity_type_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+				<xs:attribute name="description" type="xs:string" use="optional"/>
+
+				<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="ClientAddress">
+
+		<xs:sequence>
+
+			<xs:element name="addressType" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates the type of address (e.g., fiscal address, legal address, correspondence address, etc.)
+
+</xs:documentation>
+					<xs:appinfo>Entity : address - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="clientGroup" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>References a Data Security Profile associated with an occurrence. This field, which is mandatory, is used to control user access to one occurrence.
+</xs:documentation>
+					<xs:appinfo>Security profile. Put 'DEF_DATA_SECU_PROF' if no security managers groups have been defined.</xs:appinfo>
+					<xs:appinfo>Entity : address - Attribute :  data_secu_prof_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="country" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates the country or area in which the address is situated.
+
+</xs:documentation>
+					<xs:appinfo>Entity : address - Attribute :  geographic_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="faxNumber" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Fax number of the address.
+
+</xs:documentation>
+					<xs:appinfo>Entity : address - Attribute :  fax_c - Datatype : phone_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fullAddress" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The address text in one or more lines (i.e., carriage returns are authorised).
+
+</xs:documentation>
+					<xs:appinfo>Entity : address - Attribute :  address_c - Datatype : note_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="phoneNumber" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Telephone number of the address.
+
+</xs:documentation>
+					<xs:appinfo>Entity : address - Attribute :  phone_c - Datatype : phone_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Postal code used for selection purposes.
+
+The postal code must also appear in the address text (see the address attribute).
+
+</xs:documentation>
+					<xs:appinfo>Entity : address - Attribute :  postal_c - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="ClientCategory">
+
+		<xs:sequence>
+
+			<xs:element name="code" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Id of the third party.
+</xs:documentation>
+					<xs:appinfo>Entity : third_category - Attribute :  third_party_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="Portfolio">
+
+		<xs:complexContent>
+
+			<xs:extension base="infra:PMSObject">
+
+				<xs:sequence>
+
+					<xs:element name="active" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Specifies whether the portfolio is active or not. This information is used in the Portfolio Selection screen which, by default, only proposes the active portfolios to the user.
+
+</xs:documentation>
+							<xs:documentation>0. No
+No. The portfolio is not Active.
+
+1. Yes
+Yes. The portfolio is Active.
+
+
+</xs:documentation>
+							<xs:appinfo>If you have more than 2 status (active or not active), create an UDF</xs:appinfo>
+							<xs:appinfo>Entity : portfolio - Attribute :  active_f - Datatype : flag_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="businessEntityComposition" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:appinfo>Entity : bus_entity_ptf_compo</xs:appinfo>
+						</xs:annotation>
+
+						<xs:complexType>
+
+							<xs:complexContent>
+
+								<xs:extension base="infra:businessEntityComposition">
+
+									<xs:attribute name="mode" use="optional">
+
+										<xs:simpleType>
+
+											<xs:restriction base="xs:string">
+
+												<xs:enumeration value="delete"/>
+
+											</xs:restriction>
+
+										</xs:simpleType>
+
+									</xs:attribute>
+
+								</xs:extension>
+
+							</xs:complexContent>
+
+						</xs:complexType>
+
+					</xs:element>
+
+					<xs:element name="cashBookingModel" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Identifies cash booking model at portfolio level. External cash booking expected to happen in the cash portfolios linked to an operation.
+</xs:documentation>
+							<xs:documentation>0. Internal
+Internal
+1. External
+External
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  cash_booking_model_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="client" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to a third party customer who is the owner of the portfolio.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  third_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="creditStatus" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Portfolio's credit status, based on which some actions could be taken on the portfolio.
+</xs:documentation>
+							<xs:documentation>0.  None 
+None.
+1. Notified
+Notified.
+2. Margin Call
+Margin Call.
+3. Sell Out
+Sell Out.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  credit_status_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="mainBusinessEntity" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>References a business entity defined as the main business entity of the portfolio. Only one main business entity is allowed per portfolio. If the user defines another main business entity, then it automatically overrides the previous main business entity.
+
+Remarks:
+If Triple'A Plus is plugged on the back-office system T24, it is recommended (for cohesion between the two systems) that the main business entity represents a record of the T24 application COMPANY.
+
+If the main business entity represents a record of the T24 application COMPANY, it is recommended (for cohesion between the two systems) that it represents a master or a lead company.
+
+The main business entity can also indirectly be defined on the portfolio through the business entity portfolio composition (table bus_entity_ptf_compo) using the attribute Main Business Entity (main_bus_entity_f).
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  main_business_entity_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="managementBeginDate" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Management Begin Date will be treated for the  computation of return and performance analysis, based on system parameter USE_PTF_MGMT_DATE_RULE being 1.
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  mgt_begin_d - Datatype : datetime_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="managementEndDate" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Management End Date will be treated for the  computation of return and performance analysis, based on system parameter USE_PTF_MGMT_DATE_RULE being 1.
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  mgt_end_d - Datatype : datetime_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="managementType" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Management Type
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  manag_type_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="marginLending" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicator, if a margin lending facility is available for the portfolio. 
+
+If not, no control of buying power (Lombard lending check) will be executed during the PTCC.
+</xs:documentation>
+							<xs:documentation>0. No
+No
+1. Yes
+Yes
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  margin_lending_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="nature" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specifies the nature of portfolio.
+</xs:documentation>
+							<xs:documentation>1. Standard
+ Standard.
+2. Mutual Fund
+ Mutual fund.
+3. Order Book
+ Order book.
+4. Model Portfolio
+ Model portfolio
+5. Fictive
+ Fictive.
+6. Non Discretionary
+ Non discretionary.
+7. Cash-Portfolio Without Fusion
+Positions into main Portfolio are treated by the Fusion process, only the Cash part of Cash Portfolio is not treated by Fusion.
+8. UMA
+9. SMA
+10. Sleeve
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  nature_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ownership" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:appinfo>Entity : portfolio_third_compo</xs:appinfo>
+						</xs:annotation>
+
+						<xs:complexType>
+
+							<xs:complexContent>
+
+								<xs:extension base="PortfolioOwner">
+
+									<xs:attribute name="mode" use="optional">
+
+										<xs:simpleType>
+
+											<xs:restriction base="xs:string">
+
+												<xs:enumeration value="delete"/>
+
+											</xs:restriction>
+
+										</xs:simpleType>
+
+									</xs:attribute>
+
+								</xs:extension>
+
+							</xs:complexContent>
+
+						</xs:complexType>
+
+					</xs:element>
+
+					<xs:element name="parentChildIndicator" type="xs:boolean">
+						<xs:annotation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="parentPortfolio" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the parent portfolio. This reference makes it possible to define a hierarchy of portfolios. To include a hierarchy when you use the financial functions, select the No Hierarchy checkbox on the Domain screen's Parameters tab. The checkbox label changes to Load Hierarchy, indicating that the hierarchy, if there is one, will be loaded.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  parent_port_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="paymentInstruction" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+						</xs:annotation>
+
+						<xs:complexType>
+
+							<xs:complexContent>
+
+								<xs:extension base="PortfolioPaymentInstruction">
+
+									<xs:attribute name="mode" use="optional">
+
+										<xs:simpleType>
+
+											<xs:restriction base="xs:string">
+
+												<xs:enumeration value="delete"/>
+
+											</xs:restriction>
+
+										</xs:simpleType>
+
+									</xs:attribute>
+
+								</xs:extension>
+
+							</xs:complexContent>
+
+						</xs:complexType>
+
+					</xs:element>
+
+					<xs:element name="performanceCurrency" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the currency of the portfolio.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  currency_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="performanceDataStorageFrequency" type="xs:unsignedShort" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specifies the Frequency with which performance data is calculated. Defines the number of Performance Frequency Units (see the perf_freq_unit_e attribute) between two occurrences. Currently limited to 1.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  perf_frequency_n - Datatype : smallint_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="performanceDataStorageUnit" type="PerformanceDataStorageUnitEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specifies the unit that defines the frequency with which data stored in the performance tables is calculated. Defines the unit of the frequency between two occurrences.
+
+</xs:documentation>
+							<xs:documentation>1. Day
+Day.
+
+2. Business Day
+Business day.
+
+4. Month
+Month.
+
+5. Quarter
+Quarter.
+
+6. Semester
+Semester.
+
+7. Year
+Year.
+
+8. Monthly Global TWR
+Monthly Global TWR.
+
+9. Monthly TWR
+Monthly TWR.
+
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  perf_freq_unit_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="performanceDetailLevel" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specifies the level of detail of the data computed and stored in the portfolio synthetic table in the Portfolio Storage function.
+The permitted values are:
+0. Global: the results are stored at the portfolio level. 
+1. Grid: the results are stored at the level of the appropriate market segment of a grid.
+2. Instrument: the results are stored at the instrument level and at grid level.
+
+</xs:documentation>
+							<xs:documentation>0. Global
+Global. Results are stored at the portfolio level.
+
+1. Grid
+Grid. Results are stored at the level of the appropriate market segment of a grid.
+
+2. Instrument
+Instrument. Results are stored at the instrument level.
+
+3. Use PSP
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  perf_det_level_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+
+						<xs:simpleType>
+
+							<xs:restriction base="xs:unsignedByte">
+
+								<xs:enumeration value="0"/>
+
+								<xs:enumeration value="1"/>
+
+								<xs:enumeration value="2"/>
+
+							</xs:restriction>
+
+						</xs:simpleType>
+
+					</xs:element>
+
+					<xs:element name="portfolioManager" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the administrative manager of a portfolio.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  admin_mgr_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="portfolioGroup" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the data security profile to which the record belongs. This is a mandatory attribute that is used to control FOPM user data access right.
+</xs:documentation>
+							<xs:appinfo>Security profile. Put 'DEF_DATA_SECU_PROF' if no security managers groups have been defined.</xs:appinfo>
+							<xs:appinfo>Entity : portfolio - Attribute :  data_secu_prof_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="portfolioType" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the type of the portfolio.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="positionManagementDate" type="PositionManagementDateEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specifies the operation date type, if any, used for the fusion. The date type determines how the resulting position and balance positions are processed. If the SWITCH_DATE parameter is used, only operations that occur after the switch date are processed.
+
+</xs:documentation>
+							<xs:documentation>0.  None 
+None. This is the system default as defined in the appl_param table.
+
+1. Operation Date
+Operation date.
+
+2. Accounting Date
+Accounting date.
+
+3. Value Date
+Value date.
+
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  fusion_date_rule_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="positionManagementLevel" type="PositionManagementLevelEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specifies whether the position logical identifier is to be changed for the current valuation. For example, a bank's policy might be that positions are kept separated if there are several depositaries. In this case, two positions in the same instrument but held in different depositaries are stored as two positions. However, if the positions must be consolidated for valuation purposes, the position logical ID must be set in the Domain.
+
+Note that if the positions are managed using the Basic rule, you cannot subsequently impose another logical identifier at the Domain level.
+</xs:documentation>
+							<xs:documentation>0.  Default 
+System Default.
+
+1. Basic
+Basic. That is, Portfolio and Instrument.
+
+2. PosCurr
+Position Currency.
+
+3. Deposit
+Depositary.
+
+4. PosCurr/Deposit
+Position Currency and Depositary.
+
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  pos_logical_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="positionManagementRule" type="PositionManagementRuleEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This field has a direct impact on the way positions are kept. If the fusion rule is set to Weighted Mean Price (WMP), all positions in the same instrument are merged into a single position, resulting in an average acquisition cost.
+
+If the fusion rule is different from Weighted Mean Price (WMP), the positions in the same instrument are never merged. The other available fusion rules determine which position is processed first.
+
+For example, say you have three buy operations for a stock: the first quantity is 100, the second is 200 and the third is 300. If you adjust these operations and the fusion rule for the portfolio is LIFO, Triple'A first performs the 300 adjustment, then the 200 and the 100 in that order. If the portfolio is FIFO, the order is reversed (i.e., 100, 200, 300). It is very important to pay attention to the order in which the operations are entered, otherwise the final stock positions are incorrect.
+
+Note that Triple'A performs a first sort on the date and then a second sort on the operation codes. Therefore, if the adjustments have the same date, pay attention to the order in which they were created so that the operation code sort is correctly performed.
+Triple'A only handles WMP adjustments automatically. The other fusion rules (LIFO, FIFO) require manual checking.
+
+</xs:documentation>
+							<xs:documentation>0.  None 
+None.
+
+1. WMP
+Weighted Mean Price.
+
+2. FIFO
+First In First Out.
+
+3. LIFO
+Last In First Out.
+
+4. High Cost
+High cost.
+
+5. Low Cost
+Low cost.
+
+6. AU Max Gain
+7. AU Min Gain
+8. Specific Lot
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  fusion_rule_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="relationshipManager" type="infra:Identifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Reference to the commercial manager of the portfolio.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  comm_mgr_id - Datatype : id_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reportingLanguage" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Unique identifier of a language. The possible values are set by OAMS and cannot be modified.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  language_dict_id - Datatype : dict_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="sharia" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicate if the portfolio must follow the islamic banking rules.
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  sharia_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="status" type="xs:unsignedByte" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Defines the status of the portfolio.
+</xs:documentation>
+							<xs:documentation>0.  None 
+None.
+1. Active
+The portfolio is active.
+2. Cancelled
+The portfolio is cancelled.
+3. Prospect
+The portfolio is considered as prospect. Mainly used in the context of investment proposal (Proposal Generator module).
+4. Blocked
+The portfolio is blocked.
+5. Debit Lock
+The portfolio is locked for all debit activities.
+6. Credit Lock
+The portfolio is locked for all credit activities.
+7. Pending Closure
+A full liquidation of the portfolio has been requested and the system is waiting for the selling of all assets. Once the selling is effective, a dedicated batch will close the portfolio and transfer the remaining cash account balance.
+8. Closed
+The portfolio is closed. If it is not yet inactive, it means that the system is still waiting for any possible portfolio closure or oustanding management fees. Once accounted, a dedicated batch will deactivate the portfolio and close the remaining cash accounts linked to it.
+
+</xs:documentation>
+							<xs:appinfo>Entity : portfolio - Attribute :  status_e - Datatype : enum_t</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+				<xs:attribute name="description" type="xs:string" use="optional"/>
+
+				<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+			</xs:extension>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+	<xs:complexType name="PortfolioOwner">
+
+		<xs:sequence>
+
+			<xs:element name="owner" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Unique identitfier of the occurrence.
+
+</xs:documentation>
+					<xs:appinfo>Entity : portfolio_third_compo - Attribute :  third_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ownershipPercentage" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The ownership weight for the related third party.
+
+</xs:documentation>
+					<xs:appinfo>Entity : portfolio_third_compo - Attribute :  weight_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ownershipRule">
+				<xs:annotation>
+					<xs:documentation>Specifies the legal status of the ownership for the related portfolio.
+This attribute can be added to the business key by modifying the installation configuration file ($AAAHOME/install/aaa_install.cfg).
+To do that, put  YES  on the column "Apply" in the section TRIPLE_A_META_DICTIONARY_CONFIG, on the line having "0822_ownership_rule_in_bk.imp".
+</xs:documentation>
+					<xs:appinfo>Entity : portfolio_third_compo - Attribute :  ownership_rule_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte"/>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="validityDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The validity date for the part of the composition.
+
+</xs:documentation>
+					<xs:appinfo>Entity : portfolio_third_compo - Attribute :  validity_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:simpleType name="PositionManagementDateEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PositionManagementRuleEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PerformanceDetailLevelEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PerformanceStorageParameter">
+
+		<xs:sequence>
+
+			<xs:element name="currency" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Currency in which the performance counters are expressed.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="grid" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description of the grid linked to the stored data.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  grid_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrumentLevel" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the data is stored for the instrument level or not.
+</xs:documentation>
+					<xs:documentation>0. No
+No
+1. Yes
+Yes
+
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  instr_level_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="oldPerformanceStorageParameter" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description of the perf_storage_param linked to the stored data.
+Not yet implemented.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  old_perf_storage_param_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="performanceAttribution" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the data are stored for "Performance Attribution" or not.
+</xs:documentation>
+					<xs:documentation>0. No
+No
+1. Yes
+Yes
+
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  perf_attrib_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="performanceFirstDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date of the first "Performance Attribution" stored data.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  perf_first_stored_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="performanceLastDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date of the last "Performance Attribution" stored data.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  perf_last_stored_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Indicates the identifier of the object (portfolio, strategy, instrument, list) to which this occurrence belongs.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  object_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionData" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description of the positions linked to the stored data.
+Not yet implemented.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  position_data_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnAnalysis" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the data are stored for "Return Analysis" or not.
+</xs:documentation>
+					<xs:documentation>0. No
+No
+1. Yes
+Yes
+
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  ret_analysis_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnFrequency" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>Indicates the frequency of the data. 
+The possible values are Month or Day. It is important to note that using the daily frequency slows down the storage process considerably.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  frequency_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnFirstDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date of the first "Return Analysis" stored data.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  ret_first_stored_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnLastDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date of the last "Return Analysis" stored data.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  ret_last_stored_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="standardFirstDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date of the first "Standard Performance" stored data.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  std_perf_first_stored_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="standardLastDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date of the last "Standard Performance" stored data.
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  std_perf_last_stored_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="standardPerformance" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the data is stored for the "Standard Performance" or not.
+</xs:documentation>
+					<xs:documentation>0. No
+No
+1. Yes
+Yes
+
+</xs:documentation>
+					<xs:appinfo>Entity : perf_storage_param - Attribute :  standard_perf_data_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:simpleType name="PerformanceDataStorageUnitEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PositionManagementLevelEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PorfolioChronologicalData">
+
+		<xs:sequence>
+
+			<xs:element name="comment" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Optional comment of a portfolio chronological data.
+</xs:documentation>
+					<xs:appinfo>Entity : port_chrono - Attribute :  comment_c - Datatype : info_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="currency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference of a currency in which a chronological data is expressed. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : port_chrono - Attribute :  currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nature" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>Describes the nature of the chronological data.
+</xs:documentation>
+					<xs:documentation>1. Market Value
+2. Accrued Interest
+3. Income
+4. Realised Capital P L
+5. Realised Currency P L
+6. Unrealised Capital P L
+7. Unrealised Currency P L
+8. Fees
+9. Tax
+10. Investment
+11. Withdrawal
+12. Mean Invested Capital
+13. TWR
+14. MWR
+15. IRR
+16. Initial Value
+17. Net Cash Flow
+18. P L
+19. Type
+20. Net Asset Value
+
+</xs:documentation>
+					<xs:appinfo>Entity : port_chrono - Attribute :  nature_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Portfolio unique identifier. As for all Ids in Triple'A, this attribute is technical and will normally never be seen by the user.
+This field is mandatory and computed by the system.
+
+</xs:documentation>
+					<xs:appinfo>Entity : port_chrono - Attribute :  portfolio_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="validity" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date from which the chronological data is valid.
+
+</xs:documentation>
+					<xs:appinfo>Entity : port_chrono - Attribute :  validity_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Value of a chronological data at one moment in time.
+
+</xs:documentation>
+					<xs:appinfo>Entity : port_chrono - Attribute :  value_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="PortfolioPaymentInstruction">
+
+		<xs:sequence>
+
+			<xs:element name="account" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Reference to the Account (instrument) associated to the Payment Instruction.
+</xs:documentation>
+					<xs:appinfo>Entity : pay_instruction - Attribute :  acc_instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="currency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the Currency associated to the Payment Instruction.
+</xs:documentation>
+					<xs:appinfo>Entity : pay_instruction - Attribute :  currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operationNature" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:documentation>Reference to the Operation Nature associated to the Payment Instruction.
+</xs:documentation>
+					<xs:appinfo>Entity : pay_instruction - Attribute :  oper_nat_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operationType" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the Operation Type associated to the Payment Instruction.
+</xs:documentation>
+					<xs:appinfo>Entity : pay_instruction - Attribute :  oper_type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operationSubType" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the Operation Subtype associated to the Payment Instruction.
+</xs:documentation>
+					<xs:appinfo>Entity : pay_instruction - Attribute :  oper_subtype_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="AccountingProfileHisto">
+
+		<xs:sequence>
+
+			<xs:element name="accProfile" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : acc_profile_histo - Attribute :  acc_profile_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>Entity : acc_profile_histo - Attribute :  begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endD" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : acc_profile_histo - Attribute :  end_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : acc_profile_histo - Attribute :  portfolio - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="ThirdAccProfileHisto">
+
+		<xs:sequence>
+
+			<xs:element name="accProfile" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_acc_profile_histo - Attribute :  acc_profile_id.code - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_acc_profile_histo - Attribute :  begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endD" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_acc_profile_histo - Attribute :  end_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="third" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_acc_profile_histo - Attribute :  third - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="ThirdPartyFtConvention">
+
+		<xs:sequence>
+
+			<xs:element name="beginD" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_ft_convention_histo - Attribute :  begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ftConvention" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_ft_convention_histo - Attribute :  ft_convention - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="third" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : third_ft_convention_histo - Attribute :  third - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="InducementFees">
+
+		<xs:sequence>
+
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : inducement_fees - Attribute :  portfolio - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrument" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : inducement_fees - Attribute :  instr - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="deposit" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : inducement_fees - Attribute :  deposit - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="paymentDate" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>Entity : inducement_fees - Attribute :  payment_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="paidAmount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : inducement_fees - Attribute :  pay_amount_m - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="currency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : inducement_fees - Attribute :  pay_currency - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reimbursement" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : inducement_fees - Attribute :  reimbursement_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="PortfolioEvent">
+
+		<xs:sequence>
+
+			<xs:element name="code" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : portfolio_event - Attribute :  code - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="instrument" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : portfolio_event - Attribute :  instrument_id - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : portfolio_event - Attribute :  portfolio_id - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quantity" type="xs:decimal">
+				<xs:annotation>
+					<xs:appinfo>Entity : portfolio_event - Attribute :  quantity_n - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : portfolio_event - Attribute :  begin_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : portfolio_event - Attribute :  end_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nature" type="xs:unsignedByte">
+				<xs:annotation>
+					<xs:appinfo>Entity : portfolio_event - Attribute :  nature_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="ClientDocument">
+
+		<xs:sequence>
+
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document - Attribute :  third_party_id - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="documentCopy" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document - Attribute :  document_copy_e - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentOwner" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document - Attribute :  owner_third - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="expiryDate" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document - Attribute :  expiry_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			 <xs:element name="language" type="xs:string" minOccurs="0">
+			 	<xs:annotation>
+			 		<xs:appinfo>Entity : crm_document - Attribute :  language - Datatype : </xs:appinfo>
+			 	</xs:annotation>
+			 </xs:element>
+			<xs:element name="receivedDate" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document - Attribute :  received_d - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="referenceId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document - Attribute :  reference - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="title" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document - Attribute :  title - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document - Attribute :  type - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="ClientDocumentLink">
+
+		<xs:sequence>
+
+			<xs:element name="client" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document_link - Attribute :  object_id - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="document">
+				<xs:annotation>
+					<xs:appinfo>Entity : crm_document_link - Attribute :  document - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="60"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+</xs:schema>

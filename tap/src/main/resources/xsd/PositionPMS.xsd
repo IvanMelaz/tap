@@ -1,0 +1,1692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by NICOLAS ELSEN (ODYSSEY ASSET MANAGEMENT) -->
+<xs:schema targetNamespace="http://www.odcgroup.com/PositionPMS" xmlns:infra="http://www.odcgroup.com/InfraPMS" xmlns="http://www.odcgroup.com/PositionPMS" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.odcgroup.com/InfraPMS" schemaLocation="InfraPMS.xsd"/>
+	<xs:element name="PositionPMS">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DataGroup" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+					</xs:annotation>
+
+					<xs:complexType>
+
+						<xs:sequence>
+
+							<xs:element name="SecuritiesPosition" type="SecuritiesPosition" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : position</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="CashPosition" type="CashPosition" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : position</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="DepositLoansPosition" type="DepositLoansPosition" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ForwardPosition" type="ForwardPosition" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : position</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="FuturePosition" type="FuturePosition" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:appinfo>Entity : position</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="FxSwapPosition" type="FxSwapPosition" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+
+					</xs:complexType>
+
+				</xs:element>
+
+			</xs:sequence>
+
+			<xs:attribute name="output" type="xs:string" use="optional"/>
+
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+
+			<xs:attribute name="mode" type="infra:ModeEnum" use="optional"/>
+
+			<xs:attributeGroup ref="infra:businessEntity_AttrGrp"/>
+
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SecuritiesPosition">
+
+		<xs:sequence>
+
+			<xs:element name="accruedInterests" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Amount of accrued interest.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  accr_amount_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="deposit" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Depositary account
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  deposit_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="historicalExchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Historical exchange rate of the security position between the position currency and the portfolio currency
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  hist_op_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="historicalInstrExchRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Historical exchange rate between the instrument currency and the portfolio currency. This exchange rate will be the 'instrument exchange rate' of the instrument position resulting from the operation.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  hist_fi_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="historicalPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Historical average price of the security position
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  hist_quote_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="historicalNetAmount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Historical net amount of an operation, expressed in the operation currency (i.e. the currency of the 'price/'unit income').
+This amount is computed as follows :
+( 'Quantity' * 'Contract Size' * 'Historical Price' )
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  hist_op_net_amount_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="initialLoadDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date on which the operation was entered into the books of the institution or an order was decided.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="initialLoadPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Instrument price on the take-on date. If empty, TripleA takes the value from the database.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quote_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrument" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Security Code
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intermediary" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the 'intermediary' (e.g. a broker) with whom the operation has been concluded. 
+This reference must point to an occurrence in the 'third party' table with a 'intermediary' nature. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  intermed_third_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Portfolio code to which the current account balance belongs
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  portfolio_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unique identifier of the position. This can be automatically generated by TA:
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="positionCriteria1" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>First criteria of position breakdown
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  sub_pos_nat_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCriteria2" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Second criteria of position breakdown
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  sub_pos_nat2_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCriteria3" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Third of position breakdown
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  sub_pos_nat3_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCurrency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Position Currency
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  op_currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionValueDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Value date of the position
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  value_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quantity" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Held quantity
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quantity_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="referenceNature" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This information indicates the reference nature of the operation.
+This information is used in the fusion process for several cases where it is important to reference another operation/position when deciding to merge/close positions together.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  ref_nat_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="referenceOperationCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference of the position/operation to merge/close with.
+This information is useful if the user wants, in some particular cases (see the comment on 'Reference Nature' for more details on these cases), to have a control on the processing of related position by the fusion process.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  ref_oper_code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="sourceCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>For Back-To-Front operations :
+Reference to an operation identifier external to Triple'A. This field allows to establish a correspondency between operations as they are stored in Triple'A and, as they are idenfied in external system, without the constraint of being unique that characterises the Triple'A 'code'.
+
+For Front-To-Back orders: 
+From Triple'A R3.51 on, this field can reference to the executed order. Please refer to the Order   Productivity Guide for more information about order execution and how to use this field.
+
+
+
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  source_code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="status" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Accounting status as defined in application parameters.
+</xs:documentation>
+					<xs:documentation>0. Cancelled
+Orders/Operation cancelled.
+5. Expired
+Orders reaching validity date defined for the execution.
+10. Validation Rejected
+Orders rejected during 4-Eyes validation process.
+15. Rejected
+Orders rejected during order execution process.
+20. Simulation
+Orders created for simulation purpose.
+25. To Validate
+Orders requesting to be processed through a 4-Eyes Validation.
+30. To Group
+Valid orders allowed for grouping.
+35. To Send
+Valid orders ready to be sent to Order Management / Back Office systems for execution processing.
+40. Sent
+Status of orders sent by WealthSuite Front Office - Portfolio Management to the Order Management / Back Office systems for execution processing.
+45. Received
+Status of orders received by the Order Management / Back Office systems for execution processing.
+50. Cancellation To Send
+Request to cancel order execution to send to the Order Management / Back Office systems for execution cancellation processing.
+55. Cancellation Sent
+Request to cancel order execution sent to the Order Management / Back Office systems for execution cancellation processing.
+60. Cancellation Received
+Request to cancel order execution received by the Order Management / Back Office systems for execution cancellation processing.
+65. Cancellation Placed
+Processing of the cancel order execution.
+70. Placed
+Processing of the execution of order.
+75. Partially Executed
+Order partially executed.
+80. Executed
+Order executed.
+85. External Position
+Status for position managed outside the bank.
+90. Accounted
+Operation accounted.
+95. Post Accounted
+Statuses applied for post-accounting.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Create a specific operation type called "INIT"
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bookExchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Exchange Rate between the Operation Currency and the Portfolio Currency. This exchange rate is expressed as the unit ratio between the Portfolio Net Amount and the Operation Net Amount. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  book_op_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bookPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Book Price of a position.
+This Book Price may be different from the Cost Price in the case of 'Book Adjusment Operation'/'Transfer Operation', which affects only the first and not the latter.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  book_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bookNetAmount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Net or gross amount of an operation, expressed in the operation currency (i.e. the currency of the 'price/'unit income'). This amount is computed as the 'Operation Gross Amount' plus the accrued interest and the sum of the Fees   Taxes Amounts (i.e. the BPs Amounts).
+This amount is computed as follows :
+'Operation Gross Amount' - 'Accrued Interest Amount' - SUM('BP1 Amount', 'BP2 Amount', ...,  'BP10 Amount')
+
+If there is a mismatch between the provided 'Operation Net Amount' and the result of the preceding computation, the difference is automatically affected to the 10th balance position amount, which contains any rounding error. This garantees that the operation is always 'balanced'. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  book_op_net_amount_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>Entity : userDefinedField</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="CashPosition">
+
+		<xs:sequence>
+
+			<xs:element name="balance" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Balance of the current account
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quantity_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cashAccount" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Current account code
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="historicalExchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Historical exchange rate of the current account position between the position currency and the portfolio currency
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  hist_op_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="initialLoadDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date on which the operation was entered into the books of the institution or an order was decided.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Portfolio code to which the current account balance belongs
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  portfolio_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unique identifier of the position. This can be automatically generated by TA:
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="positionCurrency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  op_currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sourceCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>For Back-To-Front operations :
+Reference to an operation identifier external to Triple'A. This field allows to establish a correspondency between operations as they are stored in Triple'A and, as they are idenfied in external system, without the constraint of being unique that characterises the Triple'A 'code'.
+
+For Front-To-Back orders: 
+From Triple'A R3.51 on, this field can reference to the executed order. Please refer to the Order   Productivity Guide for more information about order execution and how to use this field.
+
+
+
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  source_code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="status" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Accounting status as defined in application parameters.
+</xs:documentation>
+					<xs:documentation>0. Cancelled
+Orders/Operation cancelled.
+5. Expired
+Orders reaching validity date defined for the execution.
+10. Validation Rejected
+Orders rejected during 4-Eyes validation process.
+15. Rejected
+Orders rejected during order execution process.
+20. Simulation
+Orders created for simulation purpose.
+25. To Validate
+Orders requesting to be processed through a 4-Eyes Validation.
+30. To Group
+Valid orders allowed for grouping.
+35. To Send
+Valid orders ready to be sent to Order Management / Back Office systems for execution processing.
+40. Sent
+Status of orders sent by WealthSuite Front Office - Portfolio Management to the Order Management / Back Office systems for execution processing.
+45. Received
+Status of orders received by the Order Management / Back Office systems for execution processing.
+50. Cancellation To Send
+Request to cancel order execution to send to the Order Management / Back Office systems for execution cancellation processing.
+55. Cancellation Sent
+Request to cancel order execution sent to the Order Management / Back Office systems for execution cancellation processing.
+60. Cancellation Received
+Request to cancel order execution received by the Order Management / Back Office systems for execution cancellation processing.
+65. Cancellation Placed
+Processing of the cancel order execution.
+70. Placed
+Processing of the execution of order.
+75. Partially Executed
+Order partially executed.
+80. Executed
+Order executed.
+85. External Position
+Status for position managed outside the bank.
+90. Accounted
+Operation accounted.
+95. Post Accounted
+Statuses applied for post-accounting.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Create a specific operation type called "INIT"
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valueDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Value date of the position
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  value_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>Entity : userDefinedField</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="DepositLoansPosition">
+
+		<xs:sequence>
+
+			<xs:element name="accruedInterests" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Amount of accrued interest.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  accr_amount_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amount" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Quantity of the 'instrument' that is bought.
+This quantity is a 'displayed' quantity, which has to be mutiplied by the 'instrument contract size' to find the real  quantity applied to the unit income to give the resulting 'operation gross amount'. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quantity_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="expirationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  expiration_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="initialLoadDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date on which the operation was entered into the books of the institution or an order was decided.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="moneyMarket" type="infra:Identifier">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date on which a transaction was agreed or an order was decided. Financial risk exists as of this date. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  operation_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Reference to the portfolio to which the operation belongs.
+This information is mandatory.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  portfolio_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCode" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="positionCurrency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  op_currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionExchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Exchange Rate between the Operation Currency and the Portfolio Currency. This exchange rate is expressed as the unit ratio between the Portfolio Net Amount and the Operation Net Amount. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  op_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="referenceNature" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This information indicates the reference nature of the operation.
+This information is used in the fusion process for several cases where it is important to reference another operation/position when deciding to merge/close positions together.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  ref_nat_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sourceCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>For Back-To-Front operations :
+Reference to an operation identifier external to Triple'A. This field allows to establish a correspondency between operations as they are stored in Triple'A and, as they are idenfied in external system, without the constraint of being unique that characterises the Triple'A 'code'.
+
+For Front-To-Back orders: 
+From Triple'A R3.51 on, this field can reference to the executed order. Please refer to the Order   Productivity Guide for more information about order execution and how to use this field.
+
+
+
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  source_code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="status" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>0. Cancelled
+Orders/Operation cancelled.
+5. Expired
+Orders reaching validity date defined for the execution.
+10. Validation Rejected
+Orders rejected during 4-Eyes validation process.
+15. Rejected
+Orders rejected during order execution process.
+20. Simulation
+Orders created for simulation purpose.
+25. To Validate
+Orders requesting to be processed through a 4-Eyes Validation.
+30. To Group
+Valid orders allowed for grouping.
+35. To Send
+Valid orders ready to be sent to Order Management / Back Office systems for execution processing.
+40. Sent
+Status of orders sent by WealthSuite Front Office - Portfolio Management to the Order Management / Back Office systems for execution processing.
+45. Received
+Status of orders received by the Order Management / Back Office systems for execution processing.
+50. Cancellation To Send
+Request to cancel order execution to send to the Order Management / Back Office systems for execution cancellation processing.
+55. Cancellation Sent
+Request to cancel order execution sent to the Order Management / Back Office systems for execution cancellation processing.
+60. Cancellation Received
+Request to cancel order execution received by the Order Management / Back Office systems for execution cancellation processing.
+65. Cancellation Placed
+Processing of the cancel order execution.
+70. Placed
+Processing of the execution of order.
+75. Partially Executed
+Order partially executed.
+80. Executed
+Order executed.
+85. External Position
+Status for position managed outside the bank.
+90. Accounted
+Operation accounted.
+95. Post Accounted
+Statuses applied for post-accounting.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valueDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  value_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="interestRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  rate_p - Datatype : percent_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>Entity : userDefinedField</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="ForwardPosition">
+
+		<xs:sequence>
+
+			<xs:element name="accountNetAmount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Net amount debited of a 'cash account', expressed in the account currency (i.e. the reference currency of the 'cash account instrument' which is credited/debited). 
+The computation of this amount depends on the nature of the operation. The computation details may be found for the corresponding fileds in each operation.
+
+Please note that, if this amount is provided by the user, it is not checked whether this amount is consistent with the preceding computation, taking into account the possibly provided exchange rates. It implies that the exchange rates, if provided, are stored in the operation with an information purpose. All the computations, particularly in the fusion process, are always based the comparison of the amounts.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  acc_net_amount_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="account2" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to a 'cash account' (i.e. an 'instrument' of the 'cash account' nature) that is debited by the operation.
+This cash account allows to debit a second cash account for the same operation. This account may have a currency different from the main one. 
+This information is mandatory if the 'account 2 net amount' is different from NULL and different from 0.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account2_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cashAccount" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Current acccount
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="expirationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Expiration Date
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  expiration_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forward" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Reference to the instrument which is moved. Any nature of instrument may be referenced.
+This information is mandatory.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forwardRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Forward rate of the contract
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quote_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxClientRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex client rate when creating an order on forex. Rate direction (mutliply or divide) depends on the attribute fx rate direction (fx_rate_direction_f). Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_client_rate_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxMargin" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex margin in PIPS when creating an order on forex. Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_margin_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxMarginP" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex margin in percentage when creating an order on forex. Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_margin_p - Datatype : percent_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxMarketRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex market rate when creating an order on forex. Rate direction (mutliply or divide) depends on the attribute fx rate direction (fx_rate_direction_f). Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_market_rate_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxRateDirection" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex rate direction when creating an order on forex. Used in conjunction with the attributes fx client rate (fx_client_rate_n) and fx market rate (fx_market_rate_n).
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_rate_direction_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="initialLoadDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date on which the operation was entered into the books of the institution or an order was decided.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nature">
+				<xs:annotation>
+					<xs:documentation>1 if you receive the underlying instrument of the contract, 2 if you give the underlying instrument of the contract.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  nature_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="1"/>
+
+						<xs:enumeration value="2"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="operationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Starting date of the contract
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  operation_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Portfolio code
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  portfolio_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unique identifier of the position. This can be automatically generated by TA:
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="positionCurrency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  op_currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quantity" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Quantity of the 'instrument' that is bought.
+This quantity is a 'displayed' quantity, which has to be mutiplied by the 'instrument contract size' to find the real  quantity applied to the unit income to give the resulting 'operation gross amount'. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quantity_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sourceCode" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  source_code_id - Datatype : </xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="spotRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates, for operations on generic 'Currency Forward', what the spot 'quote' (i.e. the spot exchange rate) is on operation date.
+This information is useful to value the resulting forward position because it allows to know the premium/discount factor at that moment as well as for computing 'interest rate effect' when closing the positions.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  spot_quote_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Accounting status as defined in application parameters.
+</xs:documentation>
+					<xs:documentation>0. Cancelled
+Orders/Operation cancelled.
+5. Expired
+Orders reaching validity date defined for the execution.
+10. Validation Rejected
+Orders rejected during 4-Eyes validation process.
+15. Rejected
+Orders rejected during order execution process.
+20. Simulation
+Orders created for simulation purpose.
+25. To Validate
+Orders requesting to be processed through a 4-Eyes Validation.
+30. To Group
+Valid orders allowed for grouping.
+35. To Send
+Valid orders ready to be sent to Order Management / Back Office systems for execution processing.
+40. Sent
+Status of orders sent by WealthSuite Front Office - Portfolio Management to the Order Management / Back Office systems for execution processing.
+45. Received
+Status of orders received by the Order Management / Back Office systems for execution processing.
+50. Cancellation To Send
+Request to cancel order execution to send to the Order Management / Back Office systems for execution cancellation processing.
+55. Cancellation Sent
+Request to cancel order execution sent to the Order Management / Back Office systems for execution cancellation processing.
+60. Cancellation Received
+Request to cancel order execution received by the Order Management / Back Office systems for execution cancellation processing.
+65. Cancellation Placed
+Processing of the cancel order execution.
+70. Placed
+Processing of the execution of order.
+75. Partially Executed
+Order partially executed.
+80. Executed
+Order executed.
+85. External Position
+Status for position managed outside the bank.
+90. Accounted
+Operation accounted.
+95. Post Accounted
+Statuses applied for post-accounting.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Create a specific operation type called "INIT"
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valueDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Starting date of the contract
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  value_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>Entity : userDefinedField</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="FuturePosition">
+
+		<xs:sequence>
+
+			<xs:element name="accountExchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Exchange Rate between the Operation Currency and the Account Currency. This exchange rate is expressed as the unit ratio between the Operation Net Amount and the Account Net Amount. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  acc_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cashAccount" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Current acccount
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="deposit" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Depositary account
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  deposit_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="future" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Future code
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="initialLoadDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date on which the operation was entered into the books of the institution or an order was decided.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrumentExchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Exchange Rate between the Instrument Currency and the Portfolio Currency. This exchange rate is expressed as the unit ratio between the Portfolio Net Amount and the Instrument Net Amount. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fi_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intermediary" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the 'intermediary' (e.g. a broker) with whom the operation has been concluded. 
+This reference must point to an occurrence in the 'third party' table with a 'intermediary' nature. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  intermed_third_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nature" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>1 if long position, 2 if short position
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  nature_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="1"/>
+
+						<xs:enumeration value="2"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="operationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Take-on date
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  operation_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Portfolio code
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  portfolio_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unique 'business' identifier of an operation.
+This code, combined with the 'status' and a sequence number, constitutes the unique key of an operation.
+
+</xs:documentation>
+					<xs:appinfo>Unique identifier of the position. This can be automatically generated by TA:</xs:appinfo>
+					<xs:appinfo>Entity : ext_operation - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="positionCriteria1" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  sub_pos_nat_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCriteria2" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  sub_pos_nat2_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCriteria3" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  sub_pos_nat3_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionCurrency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Position currency
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  op_currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionExchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Exchange Rate between the Operation Currency and the Portfolio Currency. This exchange rate is expressed as the unit ratio between the Portfolio Net Amount and the Operation Net Amount. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  op_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="price" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates investment unit quote of the instrument. To obtain the price corresponding to this quote, which corresponds to the way the instrument is 'quoted' by the markets, the conversion corresponding to the 'price calculation rule' specified in the operation has to be applied.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quote_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quantity" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Quantity of the 'instrument' that is bought.
+This quantity is a 'displayed' quantity, which has to be mutiplied by the 'instrument contract size' to find the real  quantity applied to the unit income to give the resulting 'operation gross amount'. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quantity_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Accounting status as defined in application parameters.
+</xs:documentation>
+					<xs:documentation>0. Cancelled
+Orders/Operation cancelled.
+5. Expired
+Orders reaching validity date defined for the execution.
+10. Validation Rejected
+Orders rejected during 4-Eyes validation process.
+15. Rejected
+Orders rejected during order execution process.
+20. Simulation
+Orders created for simulation purpose.
+25. To Validate
+Orders requesting to be processed through a 4-Eyes Validation.
+30. To Group
+Valid orders allowed for grouping.
+35. To Send
+Valid orders ready to be sent to Order Management / Back Office systems for execution processing.
+40. Sent
+Status of orders sent by WealthSuite Front Office - Portfolio Management to the Order Management / Back Office systems for execution processing.
+45. Received
+Status of orders received by the Order Management / Back Office systems for execution processing.
+50. Cancellation To Send
+Request to cancel order execution to send to the Order Management / Back Office systems for execution cancellation processing.
+55. Cancellation Sent
+Request to cancel order execution sent to the Order Management / Back Office systems for execution cancellation processing.
+60. Cancellation Received
+Request to cancel order execution received by the Order Management / Back Office systems for execution cancellation processing.
+65. Cancellation Placed
+Processing of the cancel order execution.
+70. Placed
+Processing of the execution of order.
+75. Partially Executed
+Order partially executed.
+80. Executed
+Order executed.
+85. External Position
+Status for position managed outside the bank.
+90. Accounted
+Operation accounted.
+95. Post Accounted
+Statuses applied for post-accounting.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="referenceNature" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This information indicates the reference nature of the operation.
+This information is used in the fusion process for several cases where it is important to reference another operation/position when deciding to merge/close positions together.
+</xs:documentation>
+					<xs:appinfo>7</xs:appinfo>
+					<xs:appinfo>Entity : ext_operation - Attribute :  ref_nat_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="referenceOperationCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference of the position/operation to merge/close with.
+This information is useful if the user wants, in some particular cases (see the comment on 'Reference Nature' for more details on these cases), to have a control on the processing of related position by the fusion process.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  ref_oper_code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="sourceCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>For Back-To-Front operations :
+Reference to an operation identifier external to Triple'A. This field allows to establish a correspondency between operations as they are stored in Triple'A and, as they are idenfied in external system, without the constraint of being unique that characterises the Triple'A 'code'.
+
+For Front-To-Back orders: 
+From Triple'A R3.51 on, this field can reference to the executed order. Please refer to the Order   Productivity Guide for more information about order execution and how to use this field.
+
+
+
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  source_code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="type" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Create a specific operation type called "INIT"
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valueDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Value date of the position
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  value_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>Entity : userDefinedField</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+	<xs:complexType name="FxSwapPosition">
+
+		<xs:sequence>
+
+			<xs:element name="account1" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to a 'cash account' (i.e. an 'instrument' of the 'cash account' nature) that is debited.
+This information is mandatory if the 'account net amount' is different from NULL and different from 0.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="account1CcyFTCcyExchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Exchange Rate between the Operation Currency and the Account Currency. This exchange rate is expressed as the unit ratio between the Operation Net Amount and the Account Net Amount. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  acc_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="account1NetAmount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Net amount debited of a 'cash account', expressed in the account currency (i.e. the reference currency of the 'cash account instrument' which is credited/debited). 
+The computation of this amount depends on the nature of the operation. The computation details may be found for the corresponding fileds in each operation.
+
+Please note that, if this amount is provided by the user, it is not checked whether this amount is consistent with the preceding computation, taking into account the possibly provided exchange rates. It implies that the exchange rates, if provided, are stored in the operation with an information purpose. All the computations, particularly in the fusion process, are always based the comparison of the amounts.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  acc_net_amount_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="account2" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to a 'cash account' (i.e. an 'instrument' of the 'cash account' nature) that is debited by the operation.
+This cash account allows to debit a second cash account for the same operation. This account may have a currency different from the main one. 
+This information is mandatory if the 'account 2 net amount' is different from NULL and different from 0.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account2_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="account2CcyFTCcyExchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Exchange Rate between the Operation Currency and the Account 2 Currency. This exchange rate is expressed as the unit ratio between the Operation Net Amount and the Account 2 Net Amount. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  acc2_exch_rate - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="account2NetAmount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Net amount debited/credited on the second account, expressed in the Account 2 Currency.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  acc2_net_amount_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountingDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date on which the operation was entered into the books of the institution or an order was decided.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  account_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="baseCurrQuantity" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Quantity of the 'instrument' that is bought.
+This quantity is a 'displayed' quantity, which has to be mutiplied by the 'instrument contract size' to find the real  quantity applied to the unit income to give the resulting 'operation gross amount'. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quantity_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="direction" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Nature of the operation.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  nature_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="expirationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates for position in generic 'money market' instrument the expiration date of the position.
+This date is used in the 'Cash   Liquidity' module, as well as in the 'Automatic Expiration' module.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  expiration_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxClientRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex client rate when creating an order on forex. Rate direction (mutliply or divide) depends on the attribute fx rate direction (fx_rate_direction_f). Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_client_rate_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxMargin" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex margin in PIPS when creating an order on forex. Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_margin_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxMarginP" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex margin in percentage when creating an order on forex. Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_margin_p - Datatype : percent_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxMarketRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex market rate when creating an order on forex. Rate direction (mutliply or divide) depends on the attribute fx rate direction (fx_rate_direction_f). Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_market_rate_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxRateDirection" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forex rate direction when creating an order on forex. Used in conjunction with the attributes fx client rate (fx_client_rate_n) and fx market rate (fx_market_rate_n).
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_rate_direction_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxSpotRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the spot quote depending on the forex_rate_direction when creating an order on forex Swap. Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_spot_quote_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fxSwapContract" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Reference to the instrument which is moved. Any nature of instrument may be referenced.
+This information is mandatory.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operationGrossAmount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Gross amount of an operation, expressed in the operation currency (i.e. the currency of the 'price/'unit income').
+This amount is computed as follows :
+( 'Quantity' * 'Contract Size' * 'Price' ) + 'Supplemetary Amount'
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  op_gross_amount_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="orderType" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This attribute is used only for the Web packaging.
+
+It defines the order type used to manage the order display in the WUI.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  order_type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="portfolio" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Reference to the portfolio to which the operation belongs.
+This information is mandatory.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  portfolio_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="referenceNature" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This information indicates the reference nature of the operation.
+This information is used in the fusion process for several cases where it is important to reference another operation/position when deciding to merge/close positions together.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  ref_nat_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reversalIndicator" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Allows to specify the nature of the 'reversal' when an operation is the reversal of another.
+</xs:documentation>
+					<xs:documentation>0.  None 
+1. Reverse
+The operation is a "Reverse", the reversed operation code is specified in "Reversal Operation Code".
+2. Reversed
+The operation is "Reversed".
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  revers_oper_nat_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reversedTransactionCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Allows to reference the 'code' of an operation that is 'reversed' by the current operation.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  revers_oper_code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="sellForward" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the forward amount when creating an order on forex Swap (on Swap paid leg). Must be set by Default Value.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  fx_far_leg_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sourceSystemCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>For Back-To-Front operations :
+Reference to an operation identifier external to Triple'A. This field allows to establish a correspondency between operations as they are stored in Triple'A and, as they are idenfied in external system, without the constraint of being unique that characterises the Triple'A 'code'.
+
+For Front-To-Back orders: 
+From Triple'A R3.51 on, this field can reference to the executed order. Please refer to the Order   Productivity Guide for more information about order execution and how to use this field.
+
+
+
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  source_code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="status" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Status of the operation.
+It allows to distinguish between various stages in the processing of an operation, from a simulation purpose to an accounted operation, passing through the various order states.
+The use of states allows to describe the life cycle of operations in financial institutions. The number of states and their meaning depend on the internal organisation characterising each of them.
+There are special types of states that have a specific meaning:
+-   The "Accounting" Status, which makes the distinction between orders, and  the accounted positions. This particular status can be parametrised at system level.
+-   The "Simulation" Status, which distinguishes between simulated orders and accounted positions. This particular status can be parametrised at system level.
+-   The "Cancel" Status, which allows to keep trace of cancelled operations. This type of status can be parametrised at system level.
+
+As explained in the chapter named "The Fusion Process", positions with different states never merge together.
+If the user modifies the status of a position by updating it, no history will be kept.
+This field is mandatory.
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subType" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  sub_type_id - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="swapRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates investment unit quote of the instrument. To obtain the price corresponding to this quote, which corresponds to the way the instrument is 'quoted' by the markets, the conversion corresponding to the 'price calculation rule' specified in the operation has to be applied.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  quote_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tradeCurrency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the currency of the operation. This is the currency in which the 'quote' is expressed.
+Note that this currency may be different from the 'instrument' currency.  
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  op_currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unique 'business' identifier of an operation.
+This code, combined with the 'status' and a sequence number, constitutes the unique key of an operation.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  code - Datatype : code_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="255"/>
+
+						<xs:minLength value="0"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="transactionDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date on which a transaction was agreed or an order was decided. Financial risk exists as of this date. 
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  operation_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the type of an operation. The types can be defined on site, through the 'type' table.
+Note that there is a restriction on the types that can be referenced in an operation. The oper_nat_e attribute of the type must be the same as the nature_e of the operation. In this particular case, the type must have an 'investment' oper_nat_e.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valueDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Value day for accrued interest calculation.
+
+</xs:documentation>
+					<xs:appinfo>Entity : ext_operation - Attribute :  value_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userDefinedField" type="infra:UserDefinedField" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+
+		<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+	</xs:complexType>
+</xs:schema>

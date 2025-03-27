@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by ODYSSEY ASSET MANAGEMENT (ODYSSEY ASSET MANAGEMENT) -->
+<xs:schema targetNamespace="http://www.odcgroup.com/CaEvent" xmlns:infra="http://www.odcgroup.com/InfraPMS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.odcgroup.com/CaEvent" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.odcgroup.com/InfraPMS" schemaLocation="InfraPMS.xsd"/>
+	<xs:element name="CaEvent">
+		<xs:annotation>
+			<xs:documentation>Odyssey Client PMS Schema</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DataGroup" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+					</xs:annotation>
+
+					<xs:complexType>
+
+						<xs:sequence>
+
+							<xs:element name="CaGeneral" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+								</xs:annotation>
+
+								<xs:complexType>
+
+									<xs:complexContent>
+
+										<xs:extension base="CaGeneral">
+
+											<xs:attribute name="description" type="xs:string" use="optional"/>
+
+											<xs:attribute name="sequenceNumber" type="xs:long" use="optional"/>
+
+											<xs:attribute name="mode" type="xs:string" use="optional"/>
+
+										</xs:extension>
+
+									</xs:complexContent>
+
+								</xs:complexType>
+
+							</xs:element>
+
+						</xs:sequence>
+
+					</xs:complexType>
+
+				</xs:element>
+
+			</xs:sequence>
+
+			<xs:attribute name="output" type="xs:string" use="optional"/>
+
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+
+			<xs:attribute name="mode" type="infra:ModeEnum" use="optional"/>
+
+			<xs:attributeGroup ref="infra:businessEntity_AttrGrp"/>
+
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CaGeneral">
+
+		<xs:sequence>
+
+			<xs:element name="announcementDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Announcement date.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  announcement_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="code">
+				<xs:annotation>
+					<xs:documentation>Reference code.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  code - Datatype : shortinfo_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:token">
+
+						<xs:maxLength value="40"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="description" type="xs:string">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="effectiveDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Effective date.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  effective_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="eventType" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Type of corporate action event to which the message relates.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  event_type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="instrument" type="infra:Identifier">
+				<xs:annotation>
+					<xs:documentation>Reference to the underlying instrument.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mandatory">
+				<xs:annotation>
+					<xs:documentation>Specifies if it is mandatory or voluntary to participate in the Corporate Action.
+Mandatory: participation in CA event is mandatory.
+Voluntary: participation in CA event is voluntary.
+
+</xs:documentation>
+					<xs:documentation>0. Mandatory Instr Required
+1. Mandatory No Instr Required
+2. Voluntary
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  mandatory_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="0"/>
+
+						<xs:enumeration value="1"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="messageType" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Function of the message (New, Cancel, Replace, etc.).
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  message_type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nexusStatus">
+				<xs:annotation>
+					<xs:documentation>Specifies the Nexus status.
+
+</xs:documentation>
+					<xs:documentation>0. None
+1. On Request
+2. Part-Verified
+3. Verified
+4. Suspended
+5. Dead
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  nexus_status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="0"/>
+
+						<xs:enumeration value="1"/>
+
+						<xs:enumeration value="2"/>
+
+						<xs:enumeration value="3"/>
+
+						<xs:enumeration value="4"/>
+
+						<xs:enumeration value="5"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="processingStatus">
+				<xs:annotation>
+					<xs:documentation>Processing Status: status that defines the completeness of information contained in the notification (complete, preliminary announcement confirmed, preliminary announcement unconfirmed).
+
+</xs:documentation>
+					<xs:documentation>0. Complete
+1. Preliminary Confirmed
+2. Preliminary Unconfirmed
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  processing_status_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="1"/>
+
+						<xs:enumeration value="2"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="provider" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Provider of the corporate action.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  provider_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="senderReferenceCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Sender reference code.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  sender_reference - Datatype : shortinfo_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="shortDescription" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Short description of the event in your own words.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  short_description_c - Datatype : info_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subEventType" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Subtype of corporate action event to which the message relates.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corporate_action - Attribute :  sub_event_type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="caDetail" type="CaDetail" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>Entity : corp_action_detail</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:complexType name="CaDetail">
+
+		<xs:sequence>
+
+			<xs:element name="addExistingSecu" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Quantity of additional securities for a given quantity of underlying securities when the  underlying securities are not exchanged or debited.
+These two numbers are separated by a forward slash (the '/' character).
+Example:
+1 / 1 means that there is 1 new share credited for every 1 underlying share = 2 resulting shares.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  add_existing_secu_c - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="addSubscribedResultSecu" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Quantity of additional rights/new shares awarded for a given quantity of securities derived from Subscription.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  add_subscribed_result_secu_c - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="availableDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Available date: Date at which securities become available for sale, e.g. dispatch date.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  available_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="caOptionType" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Corporate Action option type identifier.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  coa_option_type_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="conversionPeriodBegindate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Begin Date of the conversion period, in which securities can be converted or exchanged
+for other securities.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  conversion_period_begin_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="conversionPeriodEndDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The End Date of the conversion period, in which securities can be converted or exchanged
+for other securities.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  conversion_period_end_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="creditedSecurityInstrument" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Security to be credited.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  credited_secu_instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="debitedSecurityInstrument" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Security to be debited.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  debited_secu_instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="defaultProcess" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>The current option is selected by default if no instruction is provided by the account owner.
+
+</xs:documentation>
+					<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  default_process_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dispositionFraction">
+				<xs:annotation>
+					<xs:documentation>Disposition of fraction.
+
+</xs:documentation>
+					<xs:documentation>0. NONE
+1. Distributed
+2. Round Down
+3. Round Up
+4. Standard
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  disposition_fraction_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+
+				<xs:simpleType>
+
+					<xs:restriction base="xs:unsignedByte">
+
+						<xs:enumeration value="0"/>
+
+						<xs:enumeration value="1"/>
+
+						<xs:enumeration value="2"/>
+
+						<xs:enumeration value="3"/>
+
+						<xs:enumeration value="4"/>
+
+					</xs:restriction>
+
+				</xs:simpleType>
+
+			</xs:element>
+
+			<xs:element name="drawDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Draw date: date at which the drawing is done.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  draw_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exchangeRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Currency exchange rate applicable to the CA event.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  exchange_rate_n - Datatype : exchange_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Ex date: Securities traded on or after this date are not eligible for Corporate Action events, eg, publication date.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  ex_date_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exercicePeriodBeginDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Begin Date of the exercice period in which warrants and rights can be exercised.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  exercice_period_begin_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exercicePeriodEndDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The End Date of the exercice period in which warrants and rights can be exercised.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  exercice_period_end_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exercicePrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>There are two possible cases:
+1. Price at which a security is purchased/sold if a warrant is exercised.
+2. Price at which a bond is converted to an underlying security.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  exercice_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="firstDealingDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>First dealing date: Date at which the trading of new securities begins.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  first_dealing_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fullProviderInfo" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Full Provider information. This field lets you add the text you want to describe your provider.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  provider_info_t - Datatype : text_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="grossDividendRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Cash dividend amount per share before deductions or allowances.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  gross_dividend_rate_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="interestPeriodBeginDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Begin Date of the interest period in which the interest rate is applied.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  interest_period_begin_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="interestPeriodEndDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The End Date of the interest period in which the interest rate is applied.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  interest_period_end_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="interestRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Interest rate.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  interest_rate_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intermediateInstrument" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This element is not mapped currently
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  Not Mapped - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intemediateExpirationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Termination date of a privilege that can be exercised according to
+the terms of a securities issue.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  interm_expiration_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intemediateIndicativePrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Estimated indicative price.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  interm_indicative_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intemediateMarketPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Current market price of securities.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  interm_market_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intermediateTradingPeriodBeginDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Begin Date of a period during which intermediate securities are tradable in a secondary market.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  interm_trading_period_begin_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intermediateTradingPeriodEndDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>End Date of period during which intermediate securities are tradable in a secondary market.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  interm_trading_period_end_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intermediateSell" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies whether the intermediate security can be sold or not.
+</xs:documentation>
+					<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  interm_sell_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ipoLotSize" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The minimum number of shares that can be bid. Shares can only be bid in multiples of the lot size.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  ipo_lot_size_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issuePrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Initial issue price of securities.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  issue_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issueType" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>IPO Issue Type-Describes the way in which the final IPO subscription price will be determined
+</xs:documentation>
+					<xs:documentation>0.  NONE 
+1. Single Bid
+2. Book Build
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  issue_type_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="marketDeadlineDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date that the issuer has set as the deadline to respond with instructions to an outstanding offer or privilege.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  market_deadline_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="marketPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Current market price of securities.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  market_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="maxSubscriptionAmt" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Maximum Subscription Amount in case of a book building IPO.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  max_subscription_amt_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="maxSubscriptionPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Maximum Subscription Amount in case of a book building IPO.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  max_subscription_amt_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="meetingDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Meeting date: Date scheduled for the company?s general meeting.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  meeting_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minHoldingAmt" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Minimum amount, which must be held in the portfolio.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_holding_amt_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minimumHoldingPeriod" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Minimum Holding Period applicable for the instrument
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_holding_period_n - Datatype : smallint_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minimumHoldingPeriodUnit" type="xs:unsignedByte" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unit of period used with the min_holding_period_n attribute
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_holding_period_unit_e - Datatype : enum_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minInitSubscriptionAmt" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Minimum amount required for the subscription.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_subscription_amt_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minRedemptionAmt" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Minimum amount required for the redemption.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_redemption_amt_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minRedemptionCurr" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Currency of the minimum redemption.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_redemption_curr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minSipAmt" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Minimum order amount for orders from systematic investment plans.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_sip_amt_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minSubscriptionAmt" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Minimum amount required for the subscription.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_subscription_amt_m - Datatype : amount_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minSubscriptionCurr" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Currency of the minimum Subscription.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_subscription_curr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minSubscriptionPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Minimum Subscription Price in case of a book building IPO.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  min_subscription_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="netDividendRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Cash dividend amount per share after deductions or allowances have been made.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  net_dividend_rate_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="newToOld" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>New to old: Quantity of new securities for a given quantity of underlying securities where the underlying securities will be exchanged or debited.
+These two numbers are separated by a forward slash (the '/' character).
+Example:
+2 / 1 means that 2 new shares will be credited for every 1 underlying share debited = 2 resulting shares.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  new_to_old_c - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="newToRights" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>New to rights: Quantity of new shares that will be derived by the exercise of a given quantity of rights. These two numbers are separated by a forward slash (the '/' character).
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  new_to_rights_c - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nextDetailAnnonceDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Next detail announcement date: Date at which additional information on the event will be
+announced, e.g. exchange ratio announcement date.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  next_detail_annonce_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="offerPeriodBeginDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the beginning date of the offer period.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  offer_period_begin_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="offerPeriodEndDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the end date of the offer period.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  offer_period_end_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="offerPricePaid" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Offer price paid: Price at which securities are offered by the issuer.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  offer_price_paid_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="offerPriceReceived" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Offer price received: Price at which securities are offered to be sold.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  offer_price_received_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="offerPriceCurrency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This element is not mapped currently
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  Not Mapped - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="optionCurrency" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Currency in which the cash from interest or dividend payments is offered.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  option_currency_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="optionInstrument" type="infra:Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Identification of the financial instrument involved in the current option.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  option_secu_instr_id - Datatype : id_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="optionNumber" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Number assigned by account servicer to identify the available Corporate Actions options.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  option_number_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="overrideMinHoldingDays" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies if minimum holding period can be overridden.
+</xs:documentation>
+					<xs:documentation>0. No
+1. Yes
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  override_min_holding_days_f - Datatype : flag_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="paymentDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Payment date: Date at which securities/cash will be paid.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  payment_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="protectDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The last day on which a holder can elect securities pursuant to a notice of guaranteed delivery or other required documentation.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  protect_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="recordDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Modification or creation date of the record.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  record_date_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="redemptionDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Redemption date: Date at which securities are to be redeemed in return for the payment of the principal.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  redemption_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="redemptionDays" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Number of available days, after the redemption end date, for realizing the selling and remunerating the client.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  redemption_days_n - Datatype : smallint_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="redemptionPeriodBegin" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Start date of redemption period.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  redemption_period_begin_d - Datatype : date_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="redemptionPeriodEnd" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>End date of redemption period.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  redemption_period_end_d - Datatype : date_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="redemptionPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Price at which a security will be redeemed.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  redemption_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="redemptionRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Portion of the principal that is to be redeemed.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  redemption_rate_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="refundDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Refund, in case of unsuccessful allotments, will be processed on this date.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  refund_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reinvestmentPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Price at which a cash disbursement will be reinvested into securities.
+
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  reinvestment_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="responseDeadlineDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date that the account servicer has set as the deadline to respond with instructions to an outstanding offer or privilege.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  response_deadline_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rightsToUnderlying" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Quantity of rights awarded for a given quantity of underlying shares.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  rights_to_underlying_c - Datatype : name_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sequenceNumber" type="xs:integer">
+				<xs:annotation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  sequence_number - Datatype : </xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subscriptionDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Subscription date: Date at which instructions for a rights subscription will be accepted.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  subscription_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subscriptionEndTime" type="xs:time" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>IPO subscription has to be submitted before  this time on the last day of the subscription period.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  subscription_end_time_d - Datatype : datetime_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subscriptionPeriodBegin" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Start date of subscription period.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  subscription_period_begin_d - Datatype : date_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subscriptionPeriodEnd" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>End date of subscription period.
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  subscription_period_end_d - Datatype : date_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subscriptionPrice" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Price at which new securities will be subscribed, e.g. a rights issue.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  subscription_price_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="withholdingTaxRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Percentage of a cash distribution that is withheld by a tax authority.
+
+</xs:documentation>
+					<xs:appinfo>Entity : corp_action_detail - Attribute :  withholding_tax_rate_n - Datatype : number_t</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mbFields" type="infra:mbFields" minOccurs="0">
+				<xs:annotation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+	<xs:simpleType name="dispositionFractionEnum">
+		<xs:restriction base="xs:unsignedByte">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

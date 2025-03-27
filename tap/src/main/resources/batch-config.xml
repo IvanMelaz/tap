@@ -35,13 +35,51 @@
         <constructor-arg value="D:\output.xml"/>
     </bean>
 
+    <!-- Reader - Read XML content -->
+    <bean id="xmlChunkReader" class="com.unicredit.tap.reader.XmlChunkReader">
+        <constructor-arg>
+            <bean class="org.springframework.core.io.FileSystemResource">
+                <constructor-arg value="D:\output.xml"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <!-- xsd resources-->
+    <bean id="xsdResources" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <bean class="org.springframework.core.io.ClassPathResource">
+                    <constructor-arg value="xsd/Main.xsd"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!-- Writer - Validate XML content with an xsd -->
+    <bean id="xmlValidationWriter" class="com.unicredit.tap.writer.XmlValidationWriter">
+        <constructor-arg ref="xsdResources"/>
+    </bean>
+
+    <!-- Spep listener-->
+    <bean id="validationStepListener" class="com.unicredit.tap.listener.ValidationStepListener"/>
+
+
     <!-- Define Job -->
     <job id="IF03CvsJob" xmlns="http://www.springframework.org/schema/batch" job-repository="jobRepository">
         <step id="step1">
             <tasklet>
-                <chunk reader="if03MappingItemReader" processor="if03ItemProcessor" writer="jaxbTapXmlWriter"
-                       commit-interval="100"/>
+                <chunk reader="if03MappingItemReader" processor="if03ItemProcessor" writer="jaxbTapXmlWriter" commit-interval="100"/>
             </tasklet>
+            <next on="COMPLETED" to="validateXmlStep"/>
+        </step>
+
+        <step id="validateXmlStep">
+            <tasklet>
+                <chunk reader="xmlChunkReader" writer="xmlValidationWriter" commit-interval="1"/>
+            </tasklet>
+            <listeners>
+                <listener ref="validationStepListener"/>
+            </listeners>
         </step>
     </job>
 
