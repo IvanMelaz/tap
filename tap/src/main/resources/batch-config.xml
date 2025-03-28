@@ -64,7 +64,7 @@
     <bean id="validationStepListener" class="com.unicredit.tap.listener.ValidationStepListener"/>
 
 
-    <!-- Define Job -->
+    <!-- Define XML Transformation Job -->
     <job id="IF03CvsJob" xmlns="http://www.springframework.org/schema/batch" job-repository="jobRepository">
         <step id="step1">
             <tasklet>

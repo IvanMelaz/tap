@@ -1,6 +1,5 @@
 package com.unicredit.tap.writer;
 
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.unicredit.tap.model.CashPosition;
 import com.unicredit.tap.model.DataGroup;
@@ -12,6 +11,9 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.core.io.FileSystemResource;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class CashPositionXmlWriter implements ItemWriter<CashPosition> {
@@ -29,13 +31,17 @@ public class CashPositionXmlWriter implements ItemWriter<CashPosition> {
 
         if (!items.isEmpty()) {
             File outputFile = new FileSystemResource(outputFilePath).getFile();
-
             DataGroup dataGroup = new DataGroup((List<CashPosition>) items);
             PositionPMS positionPMS = new PositionPMS(dataGroup);
-
             XmlMapper xmlMapper = new XmlMapper();
-            xmlMapper.enable(SerializationFeature.INDENT_OUTPUT); // Enable pretty printing
-            xmlMapper.writeValue(outputFile, positionPMS);
+
+            String xmlString = xmlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(positionPMS);
+            String xmlDeclaration = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+            xmlString = xmlDeclaration + xmlString;
+
+            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(outputFile), StandardCharsets.UTF_8)) {
+                writer.write(xmlString);
+            }
 
             log.info("Marshalled chunk to XML: {}", outputFile.getAbsolutePath());
         }

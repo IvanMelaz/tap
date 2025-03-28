@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+//@JsonRootName(namespace = "http://www.odcgroup.com/PositionPMS", value = "PositionPMS") //Important for namespace
 public class PositionPMS {
 
     @JacksonXmlProperty(localName = "DataGroup")
